@@ -50,3 +50,6 @@ group :production do
    gem 'pg'
    gem 'rails_12factor' 
 end
+
+# Load enviroment variables
+gem 'dotenv-rails'
