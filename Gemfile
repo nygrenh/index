@@ -53,3 +53,8 @@ end
 
 # Load enviroment variables
 gem 'dotenv-rails'
+
+gem 'bootstrap-sass'
+group :development do
+  gem 'rails_layout'
+end
