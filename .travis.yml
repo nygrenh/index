@@ -13,3 +13,4 @@ deploy:
   app: theindex
   on:
     repo: nygrenh/index
+  run: "rake db:migrate"
