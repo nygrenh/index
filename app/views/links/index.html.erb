@@ -1,36 +1,19 @@
-<h1>Listing links</h1>
+<h1>Links</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Url</th>
-      <th>Description</th>
-      <th>Source</th>
-      <th>User</th>
-      <th>Domain</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @links.each do |link| %>
-      <tr>
-        <td><%= link.title %></td>
-        <td><%= link.url %></td>
-        <td><%= link.description %></td>
-        <td><%= link.source %></td>
-        <td><%= link.user_id %></td>
-        <td><%= link.domain_id %></td>
-        <td><%= link_to 'Show', link %></td>
-        <td><%= link_to 'Edit', edit_link_path(link) %></td>
-        <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="entry">
+        <div><%= link_to link.title, link.url %></div>
+        <div><%= link.description %></div>
+        <div>
+          <% link.tags.each do |tag| %>
+            <span class="label label-default"><%= tag.name %></span>
+          <% end %>
+          <span><%= link_to 'Show', link %></span>
+          <span><%= link_to 'Edit', edit_link_path(link) %></span>
+          <span><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
 
 <br>
 
