@@ -106,6 +106,6 @@ class LinksController < ApplicationController
     end
 
     def set_tag_s
-      @tag_s = @link.tags.map(&:name).to_sentence(last_word_connector: ", ")
+      @tag_s = @link.tags.map(&:name).to_sentence(last_word_connector: ", ", two_words_connector: ", ")
     end
 end
