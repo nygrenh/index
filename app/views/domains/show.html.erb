@@ -1,14 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Domain:</strong>
-  <%= @domain.domain %>
-</p>
+<h1><%= @domain.domain %></h1>
+
 
 <p>
   <strong>Description:</strong>
   <%= @domain.description %>
 </p>
 
-<%= link_to 'Edit', edit_domain_path(@domain) %> |
-<%= link_to 'Back', domains_path %>
+<%= render 'shared/links', links: @domain.links %>
