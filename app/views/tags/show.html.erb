@@ -1,14 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @tag.name %>
-</p>
+<h1><%= @tag.name %></h1>
 
 <p>
   <strong>Description:</strong>
   <%= @tag.description %>
 </p>
 
-<%= link_to 'Edit', edit_tag_path(@tag) %> |
-<%= link_to 'Back', tags_path %>
+<%= render 'shared/links', links: @tag.links %>
