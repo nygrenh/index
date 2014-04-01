@@ -15,17 +15,19 @@ class LinksController < ApplicationController
   # GET /links/new
   def new
     @link = Link.new
+    set_tag_s
   end
 
   # GET /links/1/edit
   def edit
+    set_tag_s
   end
 
   # POST /links
   # POST /links.json
   def create
     @link = Link.new(link_params)
-
+    update_tags(params[:link][:tags])
     respond_to do |format|
       if @link.save
         assosiate_with_domain
@@ -41,6 +43,7 @@ class LinksController < ApplicationController
   # PATCH/PUT /links/1
   # PATCH/PUT /links/1.json
   def update
+    update_tags(params[:link][:tags])
     respond_to do |format|
       if @link.update(link_params)
         format.html { redirect_to @link, notice: 'Link was successfully updated.' }
@@ -81,5 +84,28 @@ class LinksController < ApplicationController
       end
       @link.domain = domain
       @link.save
+    end
+
+    def update_tags(tagstring)
+      if tagstring.nil?
+        return
+      end
+      tags = tagstring.split(', ')
+      tags.each do |t|
+        tag = tag(t)
+        @link.tags << tag unless @link.tags.exists? tag
+      end
+    end
+
+    def tag(name)
+      tag = Tag.where("lower(name) = ?", name.downcase).first
+      if tag.nil?
+        tag = Tag.create name:name
+      end
+      tag
+    end
+
+    def set_tag_s
+      @tag_s = @link.tags.map(&:name).to_sentence(last_word_connector: ", ")
     end
 end

@@ -57,6 +57,7 @@ gem 'dotenv-rails'
 gem 'bootstrap-sass'
 group :development do
   gem 'rails_layout'
+  gem 'byebug'
 end
 
 group :test do
