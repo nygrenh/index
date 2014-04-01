@@ -1,19 +1,6 @@
 <h1>Links</h1>
 
-    <% @links.each do |link| %>
-      <div class="entry">
-        <div class="link"><%= link_to link.title, link.url %> <span class="domain">(<%= link_to link.domain.domain, link.domain if link.domain %>)</span> </div>
-        <div><%= link.description %></div>
-        <div>
-          <% link.tags.each do |tag| %>
-            <span class="label label-default"><%= link_to tag.name, tag %></span>
-          <% end %>
-          <span><%= link_to 'Show', link %></span>
-          <span><%= link_to 'Edit', edit_link_path(link) %></span>
-          <span><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></span>
-        </div>
-      </div>
-    <% end %>
+<%= render 'shared/links' %>
 
 <br>
 
