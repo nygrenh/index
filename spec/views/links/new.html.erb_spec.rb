@@ -20,9 +20,6 @@ describe "links/new" do
       assert_select "input#link_title[name=?]", "link[title]"
       assert_select "input#link_url[name=?]", "link[url]"
       assert_select "textarea#link_description[name=?]", "link[description]"
-      assert_select "input#link_source[name=?]", "link[source]"
-      assert_select "input#link_user_id[name=?]", "link[user_id]"
-      assert_select "input#link_domain_id[name=?]", "link[domain_id]"
     end
   end
 end

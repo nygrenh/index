@@ -26,15 +26,9 @@ class LinksController < ApplicationController
   def create
     @link = Link.new(link_params)
 
-    domain_s = URI.parse(@link.url).host.gsub(/^www\./, '')
-    domain = Domain.find_by domain:domain_s
-    if(domain.nil?)
-      domain = Domain.create domain:domain_s
-    end
-    @link.domain = domain
-
     respond_to do |format|
       if @link.save
+        assosiate_with_domain
         format.html { redirect_to @link, notice: 'Link was successfully created.' }
         format.json { render action: 'show', status: :created, location: @link }
       else
@@ -77,5 +71,15 @@ class LinksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params
       params.require(:link).permit(:title, :url, :description)
+    end
+
+    def assosiate_with_domain
+      domain_s = URI.parse(@link.url).host.gsub(/^www\./, '')
+      domain = Domain.find_by domain:domain_s
+      if(domain.nil?)
+        domain = Domain.create domain:domain_s
+      end
+      @link.domain = domain
+      @link.save
     end
 end
