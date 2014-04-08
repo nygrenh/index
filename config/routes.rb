@@ -1,4 +1,8 @@
 Index::Application.routes.draw do
+  resources :note_tags
+
+  resources :notes
+
   resources :domains
 
   resources :tags

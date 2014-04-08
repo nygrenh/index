@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140325165734) do
+ActiveRecord::Schema.define(version: 20140408204340) do
 
   create_table "domains", force: true do |t|
     t.string   "domain"
@@ -34,6 +34,21 @@ ActiveRecord::Schema.define(version: 20140325165734) do
   create_table "links_tags", id: false, force: true do |t|
     t.integer "link_id"
     t.integer "tag_id"
+  end
+
+  create_table "note_tags", force: true do |t|
+    t.integer  "note_id"
+    t.integer  "tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notes", force: true do |t|
+    t.string   "name"
+    t.text     "text"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tags", force: true do |t|
