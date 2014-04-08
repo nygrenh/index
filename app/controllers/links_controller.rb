@@ -87,6 +87,7 @@ class LinksController < ApplicationController
     end
 
     def update_tags(tagstring)
+      @link.tags = []
       if tagstring.nil?
         return
       end
