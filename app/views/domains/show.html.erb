@@ -1,7 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @domain.domain %></h1>
-
+<p>
+	<%= link_to 'Edit', edit_domain_path(@domain) %>
+	<%= link_to 'Destroy', @domain, method: :delete, data: { confirm: 'Are you sure?' } %>
+</p>
 
 <p>
   <strong>Description:</strong>
