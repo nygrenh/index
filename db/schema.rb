@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140408204340) do
+ActiveRecord::Schema.define(version: 20140409150009) do
 
   create_table "domains", force: true do |t|
     t.string   "domain"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20140408204340) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "tag_type"
   end
 
 end

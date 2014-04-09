@@ -4,7 +4,7 @@
 		<div class="description"><%= link.description %></div>
 		<div>
 			<% link.tags.each do |tag| %>
-				<span class="label label-default"><%= link_to tag.name, tag %></span>
+				<span class="label label-<%= tag.tag_type %>"><%= link_to tag.name, tag %></span>
 			<% end %>
 			<span><%= link_to 'Show', link %></span>
 			<span><%= link_to 'Edit', edit_link_path(link) %></span>
