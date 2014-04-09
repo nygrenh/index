@@ -5,8 +5,7 @@
 </p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @domain.description %>
+  <%= markdown @domain.description %>
 </p>
 
 <%= render 'shared/links', links: @domain.links %>

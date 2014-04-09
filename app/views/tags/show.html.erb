@@ -6,8 +6,7 @@
 </p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @tag.description %>
+  <%= markdown @tag.description %>
 </p>
 
 <%= render 'shared/links', links: @tag.links %>
