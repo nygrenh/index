@@ -3,14 +3,18 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .entry {
   padding-bottom: 10px;
+  padding-top: 10px;
 }
 .link a {
 	text-decoration: none;
-    color: #20a3ff !important; 
+    color: #333332 !important; 
 }
 .domain a {
 	color: grey !important;
 }
 .label a {
 	color: white !important;
+}
+.description {
+	color: grey;
 }

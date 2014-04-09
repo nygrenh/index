@@ -1,3 +1,6 @@
+$input-border-focus: #ddd;
+$navbar-default-link-hover-color: red;
+$screen-sm-min: 600px;
 
 // import the CSS framework
 @import "bootstrap";
@@ -35,12 +38,16 @@ img {
 // to make views framework-neutral
 main {
   @extend .container;
-  background-color: #eee;
-  padding-bottom: 80px;
-  width: 100%;
+  background-color: #fff;
+  max-width: 600px;
+  border-left: auto;
+  border-right: auto;
   margin-top: 51px; // accommodate the navbar
   }
 section {
   @extend .row;
   margin-top: 20px;
+  }
+  .navbar-brand {
+    font-weight: bold;
   }
