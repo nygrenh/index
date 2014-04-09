@@ -1,22 +1,13 @@
 <h1>Notes</h1>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Text</th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @notes.each do |note| %>
-      <tr>
-        <td><%= link_to note.name, note %></td>
-        <td><%= note.text %></td>
-      </tr>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= link_to note.name, note %>
+        </div>
+        <div class="panel-body"><%= markdown(note.text) %></div>
+      </div>
     <% end %>
-  </tbody>
-</table>
 
 <br>
 
