@@ -16,7 +16,6 @@ describe "notes/edit" do
     assert_select "form[action=?][method=?]", note_path(@note), "post" do
       assert_select "input#note_name[name=?]", "note[name]"
       assert_select "textarea#note_text[name=?]", "note[text]"
-      assert_select "input#note_user_id[name=?]", "note[user_id]"
     end
   end
 end
