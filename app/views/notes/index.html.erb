@@ -1,5 +1,9 @@
 <h1>Notes</h1>
 
+<%= link_to(new_note_path) do %>
+	<span class="glyphicon glyphicon-plus"></span> New Note
+<% end %>
+
     <% @notes.each do |note| %>
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -11,4 +15,3 @@
 
 <br>
 
-<%= link_to 'New Note', new_note_path %>

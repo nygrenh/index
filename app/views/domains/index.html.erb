@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Domain</th>
-      <th>Description</th>
+      <th>Links</th>
     </tr>
   </thead>
 
@@ -12,12 +12,8 @@
     <% @domains.each do |domain| %>
       <tr>
         <td><%= link_to domain.domain, domain %></td>
-        <td><%= domain.description %></td>
+        <td><%= domain.links.size %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Domain', new_domain_path %>

@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Description</th>
+      <th>Links</th>
     </tr>
   </thead>
 
@@ -12,12 +12,8 @@
     <% @tags.each do |tag| %>
       <tr>
         <td><%= link_to tag.name, tag %></td>
-        <td><%= tag.description %></td>
+        <td><%= tag.links.count %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Tag', new_tag_path %>

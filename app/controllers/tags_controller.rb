@@ -4,7 +4,7 @@ class TagsController < ApplicationController
   # GET /tags
   # GET /tags.json
   def index
-    @tags = Tag.all
+    @tags = Tag.all.sort_by!{|t| -t.links.count}
   end
 
   # GET /tags/1
