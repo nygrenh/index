@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140409150009) do
+ActiveRecord::Schema.define(version: 20140415190824) do
 
   create_table "domains", force: true do |t|
     t.string   "domain"
@@ -57,6 +57,13 @@ ActiveRecord::Schema.define(version: 20140409150009) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "tag_type"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
