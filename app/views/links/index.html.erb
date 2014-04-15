@@ -1,8 +1,8 @@
 <h1>Links</h1>
-
-<%= link_to(new_link_path) do %>
-	<span class="glyphicon glyphicon-plus"></span> New Link
-<% end %>
-
+<p>
+	<%= link_to(new_link_path, class: 'btn btn-default') do %>
+		<span class="glyphicon glyphicon-plus"></span> New Link
+	<% end %>
+</p>
 <%= render 'shared/links', links: @links%>
 
