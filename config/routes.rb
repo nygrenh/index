@@ -5,7 +5,7 @@ Index::Application.routes.draw do
 
   resources :notes
 
-  resources :domains
+  resources :domains, except: [:destroy, :new, :create]
 
   resources :tags
 

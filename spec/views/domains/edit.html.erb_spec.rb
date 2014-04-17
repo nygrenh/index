@@ -13,7 +13,6 @@ describe "domains/edit" do
 
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form[action=?][method=?]", domain_path(@domain), "post" do
-      assert_select "input#domain_domain[name=?]", "domain[domain]"
       assert_select "textarea#domain_description[name=?]", "domain[description]"
     end
   end

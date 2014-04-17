@@ -30,7 +30,7 @@ class LinksController < ApplicationController
     update_tags(params[:link][:tags])
     respond_to do |format|
       if @link.save
-        assosiate_with_domain
+        associate_with_domain
         format.html { redirect_to @link, notice: 'Link was successfully created.' }
         format.json { render action: 'show', status: :created, location: @link }
       else
@@ -76,7 +76,7 @@ class LinksController < ApplicationController
       params.require(:link).permit(:title, :url, :description)
     end
 
-    def assosiate_with_domain
+    def associate_with_domain
       domain_s = URI.parse(@link.url).host.gsub(/^www\./, '')
       domain = Domain.find_by domain:domain_s
       if(domain.nil?)
