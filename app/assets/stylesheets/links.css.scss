@@ -8,11 +8,17 @@
 	text-decoration: none;
     color: #333332 !important; 
 }
-.domain a {
+.link a:hover {
+    color: red !important; 
+}
+.domain, .domain a {
 	color: grey !important;
 }
 .label a {
 	color: white !important;
+}
+.label a:hover {
+	text-decoration: underline;
 }
 .description {
 	color: grey;
