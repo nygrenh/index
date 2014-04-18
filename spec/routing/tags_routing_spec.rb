@@ -7,8 +7,8 @@ describe TagsController do
       get("/tags").should route_to("tags#index")
     end
 
-    it "routes to #new" do
-      get("/tags/new").should route_to("tags#new")
+    it "doesn't route to #new" do
+      get("/tags/new").should_not route_to("tags#new")
     end
 
     it "routes to #show" do
@@ -19,16 +19,16 @@ describe TagsController do
       get("/tags/1/edit").should route_to("tags#edit", :id => "1")
     end
 
-    it "routes to #create" do
-      post("/tags").should route_to("tags#create")
+    it "doesn't route to #create" do
+      post("/tags").should_not route_to("tags#create")
     end
 
     it "routes to #update" do
       put("/tags/1").should route_to("tags#update", :id => "1")
     end
 
-    it "routes to #destroy" do
-      delete("/tags/1").should route_to("tags#destroy", :id => "1")
+    it "doesn't route to #destroy" do
+      delete("/tags/1").should_not route_to("tags#destroy", :id => "1")
     end
 
   end

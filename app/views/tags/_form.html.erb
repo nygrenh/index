@@ -13,17 +13,17 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, class: "form-control", placeholder: "Description", rows: 10 %>
   </div>
   <div class="field">
     <%= f.label :tag_type %><br>
-    <%= f.text_area :tag_type %>
+    <%= f.text_area :tag_type, class: "form-control", placeholder: "default" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-default' %>
   </div>
 <% end %>

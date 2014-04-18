@@ -1,6 +1,5 @@
 Index::Application.routes.draw do
-  resources :link_tags
-
+  
   resources :users
 
   resources :note_tags
@@ -9,7 +8,7 @@ Index::Application.routes.draw do
 
   resources :domains, except: [:destroy, :new, :create]
 
-  resources :tags
+  resources :tags, except: [:destroy, :new, :create]
 
   resources :links
 
