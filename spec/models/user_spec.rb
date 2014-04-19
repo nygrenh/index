@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should have a unique name" do 
+    User.create name:"admin", password:"a", password_confirmation:"a"
+    user = User.create name:"admin", password:"a", password_confirmation:"a"
+    expect(user).not_to be_valid
+  end
 end
