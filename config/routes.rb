@@ -14,6 +14,8 @@ Index::Application.routes.draw do
 
   resources :sessions, only: [:new, :create]
 
+  delete 'sign_out', to: 'sessions#destroy'
+
   root 'links#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
