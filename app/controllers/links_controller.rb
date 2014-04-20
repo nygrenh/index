@@ -1,10 +1,11 @@
 class LinksController < ApplicationController
   before_action :set_link, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_that_signed_in
 
   # GET /links
   # GET /links.json
   def index
-    @links = Link.all
+    @links = Link.where user_id:current_user.id
   end
 
   # GET /links/1
@@ -28,6 +29,7 @@ class LinksController < ApplicationController
   def create
     @link = Link.new(link_params)
     update_tags(params[:link][:tags])
+    @link.user = current_user
     respond_to do |format|
       if @link.save
         associate_with_domain
