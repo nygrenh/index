@@ -1,10 +1,11 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_that_signed_in
 
   # GET /notes
   # GET /notes.json
   def index
-    @notes = Note.all
+    @notes = Note.where user_id:current_user.id
   end
 
   # GET /notes/1
@@ -25,6 +26,7 @@ class NotesController < ApplicationController
   # POST /notes.json
   def create
     @note = Note.new(note_params)
+    @note.user = current_user
 
     respond_to do |format|
       if @note.save
