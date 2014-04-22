@@ -1,10 +1,11 @@
 class DomainsController < ApplicationController
   before_action :set_domain, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_that_signed_in
 
   # GET /domains
   # GET /domains.json
   def index
-    @domains = Domain.all.sort_by!{|d| -d.links.count}
+    @domains = Domain.where(user_id:current_user.id).sort_by!{|d| -d.links.count}
   end
 
   # GET /domains/1

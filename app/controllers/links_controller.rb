@@ -80,9 +80,9 @@ class LinksController < ApplicationController
 
     def associate_with_domain
       domain_s = URI.parse(@link.url).host.gsub(/^www\./, '')
-      domain = Domain.find_by domain:domain_s
+      domain = Domain.find_by domain:domain_s, user_id:current_user.id
       if(domain.nil?)
-        domain = Domain.create domain:domain_s
+        domain = Domain.create domain:domain_s, user_id:current_user.id
       end
       @link.domain = domain
       @link.save
