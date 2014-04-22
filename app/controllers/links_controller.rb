@@ -101,9 +101,9 @@ class LinksController < ApplicationController
     end
 
     def tag(name)
-      tag = Tag.where("lower(name) = ?", name.downcase).first
+      tag = Tag.where("lower(name) = ?", name.downcase).find_by(user_id:current_user.id)
       if tag.nil?
-        tag = Tag.create name:name, tag_type:'default'
+        tag = Tag.create name:name, tag_type:'default', user_id:current_user.id
       end
       tag
     end

@@ -1,10 +1,11 @@
 class TagsController < ApplicationController
   before_action :set_tag, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_that_signed_in
 
   # GET /tags
   # GET /tags.json
   def index
-    @tags = Tag.all.sort_by!{|t| -t.links.count}
+    @tags = Tag.where(user_id:current_user.id).sort_by!{|t| -t.links.count}
   end
 
   # GET /tags/1
