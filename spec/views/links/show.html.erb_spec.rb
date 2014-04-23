@@ -2,13 +2,14 @@ require 'spec_helper'
 
 describe "links/show" do
   before(:each) do
+    Domain.create domain:"test.com"
     @link = assign(:link, stub_model(Link,
       :title => "Title",
       :url => "Url",
       :description => "MyText",
       :source => "Source",
       :user_id => 1,
-      :domain_id => "Domain"
+      :domain_id => "1"
     ))
   end
 
@@ -18,8 +19,6 @@ describe "links/show" do
     rendered.should match(/Title/)
     rendered.should match(/Url/)
     rendered.should match(/MyText/)
-    rendered.should match(/Source/)
-    rendered.should match(/1/)
-    rendered.should match(/Domain/)
+    rendered.should match(/test.com/)
   end
 end

@@ -1,31 +1,13 @@
+
+<h1><%= @link.title %> <small> (<%= link_to @link.domain.domain, @link.domain %>) </small></h1>
+
+
 <p>
-  <strong>Title:</strong>
-  <%= @link.title %>
+  <%= link_to @link.url, @link.url %>
 </p>
 
 <p>
-  <strong>Url:</strong>
-  <%= @link.url %>
-</p>
-
-<p>
-  <strong>Description:</strong>
   <%= @link.description %>
 </p>
 
-<p>
-  <strong>Source:</strong>
-  <%= @link.source %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @link.user_id %>
-</p>
-
-<p>
-  <strong>Domain:</strong>
-  <%= @link.domain_id %>
-</p>
-
-<%= link_to 'Edit', edit_link_path(@link) %> |
+<%= link_to 'Edit', edit_link_path(@link), class: 'btn btn-sm btn-default' %>
