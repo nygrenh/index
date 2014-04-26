@@ -5,7 +5,7 @@ class TagsController < ApplicationController
   # GET /tags
   # GET /tags.json
   def index
-    @tags = Tag.where(user_id:current_user.id).sort_by!{|t| -t.links.count}
+    @tags = Tag.where(user_id:current_user.id).sort_by{|t| -t.links.count}
   end
 
   # GET /tags/1
