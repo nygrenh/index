@@ -27,40 +27,19 @@ class NotesController < ApplicationController
   def create
     @note = Note.new(note_params)
     @note.user = current_user
-
-    respond_to do |format|
-      if @note.save
-        format.html { redirect_to @note, notice: 'Note was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @note }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
-      end
-    end
+    create_response(@note.save, @note, 'created', @note, 'new')
   end
 
   # PATCH/PUT /notes/1
   # PATCH/PUT /notes/1.json
   def update
-    respond_to do |format|
-      if @note.update(note_params)
-        format.html { redirect_to @note, notice: 'Note was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
-      end
-    end
+    create_response(@note.update(note_params), @note, 'updated', @note, 'edit')
   end
 
   # DELETE /notes/1
   # DELETE /notes/1.json
   def destroy
-    @note.destroy
-    respond_to do |format|
-      format.html { redirect_to notes_url }
-      format.json { head :no_content }
-    end
+    create_response(@note.destroy, @note, 'destroyed', notes_url, notes_url)
   end
 
   private

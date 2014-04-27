@@ -46,25 +46,13 @@ class LinksController < ApplicationController
   # PATCH/PUT /links/1.json
   def update
     update_tags(params[:link][:tags])
-    respond_to do |format|
-      if @link.update(link_params)
-        format.html { redirect_to @link, notice: 'Link was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @link.errors, status: :unprocessable_entity }
-      end
-    end
+    create_response(@link.update(link_params), @link, 'updated', @link, 'edit')
   end
 
   # DELETE /links/1
   # DELETE /links/1.json
   def destroy
-    @link.destroy
-    respond_to do |format|
-      format.html { redirect_to links_url }
-      format.json { head :no_content }
-    end
+    create_response(@link.destroy, @link, 'destroyed', links_url, links_url)
   end
 
   private

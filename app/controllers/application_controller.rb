@@ -13,4 +13,16 @@ class ApplicationController < ActionController::Base
   def ensure_that_signed_in
   	redirect_to new_session_path, notice:'You should be signed in.' if current_user.nil?
   end
+
+  def create_response(result, object, message, success_destination, fail_destination)
+    respond_to do |format|
+      if result
+        format.html { redirect_to success_destination, notice: "#{object.class} was successfully #{message}." }
+        format.json { head :no_content }
+      else
+        format.html { render action: fail_destination }
+        format.json { render json: object.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 end

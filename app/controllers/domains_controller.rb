@@ -20,15 +20,7 @@ class DomainsController < ApplicationController
   # PATCH/PUT /domains/1
   # PATCH/PUT /domains/1.json
   def update
-    respond_to do |format|
-      if @domain.update(domain_params)
-        format.html { redirect_to @domain, notice: 'Domain was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @domain.errors, status: :unprocessable_entity }
-      end
-    end
+    create_response(@domain.update(domain_params), @domain, 'updated', @domain, 'edit')
   end
 
   private
