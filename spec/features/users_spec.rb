@@ -15,6 +15,14 @@ describe 'User' do
       click_button('Log in')
       expect(page).to have_content("You've logged in.")
     end
+
+    it "cannot log in with incorrect password" do
+      visit new_session_path
+      fill_in('name', with: 'Admin')
+      fill_in('password', with: 'wrong')
+      click_button('Log in')
+      expect(page).to have_content("Username and password do not match.")
+    end
   end
 
   describe 'who has logged in' do
