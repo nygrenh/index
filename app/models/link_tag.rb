@@ -1,4 +1,4 @@
 class LinkTag < ActiveRecord::Base
 	belongs_to :link
-	belongs_to :tag, dependent: :destroy
+	belongs_to :tag
 end
