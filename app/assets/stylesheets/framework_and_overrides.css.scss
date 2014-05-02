@@ -1,6 +1,5 @@
 $input-border-focus: #bbb;
 $navbar-default-link-hover-color: red;
-$screen-sm-min: 600px;
 
 // import the CSS framework
 @import "bootstrap";
@@ -39,7 +38,7 @@ img {
 main {
   @extend .container;
   background-color: #fff;
-  max-width: 700px;
+  max-width: 768px;
   border-left: auto;
   border-right: auto;
   margin-top: 51px; // accommodate the navbar
