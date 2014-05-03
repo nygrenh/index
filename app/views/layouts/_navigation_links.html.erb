@@ -3,5 +3,9 @@
 <li> <%= link_to "Tags", tags_path %> </li>
 <li> <%= link_to "Domains", domains_path %> </li>
 <li> <%= link_to "Notes", notes_path %> </li>
-<li> <%= link_to "Log in", new_session_path unless current_user %> </li>
-<li> <%= link_to "Log out", sign_out_path, method: :delete if current_user %> </li>
+<% if current_user %>
+  <li> <%= link_to "Log out", sign_out_path, method: :delete  %> </li>
+<% else %>
+<li> <%= link_to "Log in", new_session_path %> </li>
+<li> <%= link_to "Register", new_user_path %> </li>
+<% end %>
