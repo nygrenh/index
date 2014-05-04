@@ -10,4 +10,9 @@ describe Link do
     link = Link.create url:"invalid"
     expect(link).not_to be_valid
   end
+
+  it "is valid with a valid url" do
+    link = Link.create url:"https://github.com"
+    expect(link).to be_valid
+  end
 end
