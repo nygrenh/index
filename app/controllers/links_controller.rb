@@ -17,6 +17,8 @@ class LinksController < ApplicationController
   def new
     @link = Link.new
     set_tag_s
+    @link.url = params[:url]
+    @link.title = params[:title]
   end
 
   # GET /links/1/edit
