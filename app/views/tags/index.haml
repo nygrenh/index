@@ -1,0 +1,11 @@
+%h1 Tags
+%table.table.table-hover
+  %thead
+    %tr
+      %th Name
+      %th Links
+  %tbody
+    - @tags.each do |tag|
+      %tr
+        %td= link_to tag.name, tag
+        %td= tag.links.count

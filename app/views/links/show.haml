@@ -1,0 +1,13 @@
+%h1
+  = @link.title
+  %small
+    (#{link_to @link.domain.domain, @link.domain})
+%p
+  = link_to @link.url, @link.url
+%p
+  = @link.description
+%p
+  = link_to 'Edit', edit_link_path(@link), class: 'btn btn-sm btn-default'
+%label View this link on:
+%p
+  = link_to 'Wayback machine', "https://web.archive.org/web/*/#{@link.url}"

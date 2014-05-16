@@ -1,0 +1,11 @@
+%h1 Domains
+%table.table.table-hover
+  %thead
+    %tr
+      %th Domain
+      %th Links
+  %tbody
+    - @domains.each do |domain|
+      %tr
+        %td= link_to domain.domain, domain
+        %td= domain.links.size

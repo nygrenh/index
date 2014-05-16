@@ -1,8 +1,0 @@
-<h1>Links</h1>
-<p>
-	<%= link_to(new_link_path, class: 'btn btn-sm btn-default') do %>
-		<span class="glyphicon glyphicon-plus"></span> New Link
-	<% end %>
-</p>
-<%= render 'shared/links', links: @links %>
-<%= will_paginate @links, renderer: BootstrapPagination::Rails %>

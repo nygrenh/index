@@ -45,10 +45,10 @@ group :development, :test do
   gem 'rspec-rails', '~> 2.14.1'
   gem 'sqlite3'
 end
- 
+
 group :production do
    gem 'pg'
-   gem 'rails_12factor' 
+   gem 'rails_12factor'
 end
 
 # Load enviroment variables
@@ -73,3 +73,5 @@ gem 'redcarpet'
 
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
+
+gem 'haml-rails'

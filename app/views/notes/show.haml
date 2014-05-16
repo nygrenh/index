@@ -1,0 +1,5 @@
+%h1= @note.name
+%p
+  = markdown(@note.text)
+= link_to 'Edit', edit_note_path(@note), class: 'btn btn-sm btn-default'
+= link_to 'Destroy', @note, class: 'btn btn-sm btn-default', method: :delete, data: { confirm: 'Are you sure?' }

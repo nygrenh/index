@@ -1,0 +1,11 @@
+%h1 Notes
+%p
+  = link_to(new_note_path, class: 'btn btn-sm btn-default') do
+    %span.glyphicon.glyphicon-plus
+    New Note
+- @notes.each do |note|
+  .panel.panel-default
+    .panel-heading
+      = link_to note.name, note
+    .panel-body= markdown(note.text)
+%br/
