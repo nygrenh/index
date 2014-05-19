@@ -1,3 +1,4 @@
+%h1= @user.name
 %p
-  %strong Name:
-  = @user.name
+  = link_to 'Edit', edit_user_path(@user), class: 'btn btn-sm btn-default'
+  = link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-default'
