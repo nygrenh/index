@@ -11,7 +11,10 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_that_signed_in
-  	redirect_to new_session_path, notice:'You should be signed in.' if current_user.nil?
+    if current_user.nil?
+      session[:return_to] = request.url
+      redirect_to new_session_path, notice:'Please log in.'
+    end
   end
 
   def create_response(result, object, message, success_destination, fail_destination)

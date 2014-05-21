@@ -1,15 +1,15 @@
 require 'spec_helper'
 include LoginHelper
 
-describe 'Link' do 
+describe 'Link' do
   describe 'when not signed in' do
     it "cannot be created" do
       visit new_link_path
-      expect(page).to have_content('You should be signed in.')
+      expect(page).to have_content('Please log in.')
     end
   end
 
-  describe 'when signed in' do 
+  describe 'when signed in' do
     before :each do
       user = FactoryGirl.create(:user)
       sign_in(name:"Admin", password:"password")
@@ -17,7 +17,7 @@ describe 'Link' do
 
     describe 'creating links' do
 
-      it "works with a valid url" do 
+      it "works with a valid url" do
         visit new_link_path
         fill_in('link_url', with: 'http://www.test.com/')
         expect{

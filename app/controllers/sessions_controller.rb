@@ -8,7 +8,8 @@ class SessionsController < ApplicationController
       redirect_to :back, notice: "Username and password do not match."
     else
       session[:user_id] = user.id
-      redirect_to links_path, notice: "You've logged in."
+      redirect_to session[:return_to] || links_path, notice: "You've logged in."
+      session[:return_to] = nil
     end
   end
 
