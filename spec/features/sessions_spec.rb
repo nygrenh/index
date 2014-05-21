@@ -1,6 +1,5 @@
 require 'spec_helper'
 include LoginHelper
-require 'byebug'
 
 describe 'Sessions' do
   before :each do
