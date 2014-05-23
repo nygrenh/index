@@ -71,7 +71,6 @@ gem 'coveralls', require: false
 
 gem 'redcarpet'
 
-gem 'will_paginate'
-gem 'will_paginate-bootstrap'
+gem 'kaminari'
 
 gem 'haml-rails'

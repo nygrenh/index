@@ -4,4 +4,4 @@
     %span.glyphicon.glyphicon-plus
     New Link
 = render 'shared/links', links: @links
-= will_paginate @links, renderer: BootstrapPagination::Rails
+= paginate @links
