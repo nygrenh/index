@@ -76,3 +76,5 @@ gem 'kaminari'
 gem 'haml-rails'
 
 gem 'font-awesome-rails'
+
+gem 'puma'
