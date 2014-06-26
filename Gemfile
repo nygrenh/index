@@ -24,57 +24,54 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder'
 
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
-end
-
 # Use ActiveModel has_secure_password
  gem 'bcrypt-ruby', '~> 3.1.2'
 
-# Use unicorn as the app server
-# gem 'unicorn'
+# Load enviroment variables
+gem 'dotenv-rails'
 
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
+# CSS framework
+gem 'bootstrap-sass'
 
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+# Icons
+gem 'font-awesome-rails'
 
-group :development, :test do
-  gem 'rspec-rails', '~> 2.14.1'
-  gem 'sqlite3'
-end
+# Markdown parser
+gem 'redcarpet'
+
+# Pagination gem
+gem 'kaminari'
+
+# Use haml for views
+gem 'haml-rails'
+
+# Webserver
+gem 'puma'
 
 group :production do
    gem 'pg'
    gem 'rails_12factor'
 end
 
-# Load enviroment variables
-gem 'dotenv-rails'
-
-gem 'bootstrap-sass'
 group :development do
   gem 'rails_layout'
   gem 'byebug'
 end
 
 group :test do
-  gem 'simplecov', require: false
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'launchy'
+  gem 'simplecov', require: false
+  gem 'coveralls', require: false
 end
 
-gem 'coveralls', require: false
+group :development, :test do
+  gem 'rspec-rails', '~> 2.14.1'
+  gem 'sqlite3'
+end
 
-gem 'redcarpet'
-
-gem 'kaminari'
-
-gem 'haml-rails'
-
-gem 'font-awesome-rails'
-
-gem 'puma'
+group :doc do
+  # bundle exec rake doc:rails generates the API under doc/api.
+  gem 'sdoc', require: false
+end
