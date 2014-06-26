@@ -62,12 +62,14 @@ group :test do
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'launchy'
+  # Stubs and mocks for testing
+  gem 'rspec-activemodel-mocks'
   gem 'simplecov', require: false
   gem 'coveralls', require: false
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 2.14.1'
+  gem 'rspec-rails'
   gem 'sqlite3'
 end
 
