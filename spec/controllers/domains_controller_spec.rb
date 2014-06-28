@@ -21,7 +21,7 @@ describe DomainsController do
     it "assigns all domains as @domains" do
       domain = Domain.create! valid_attributes
       get :index, {}, valid_session
-      assigns(:domains).should eq([domain])
+      expect(assigns(:domains)).to eq([domain])
     end
   end
 
@@ -29,7 +29,7 @@ describe DomainsController do
     it "assigns the requested domain as @domain" do
       domain = Domain.create! valid_attributes
       get :show, {:id => domain.to_param}, valid_session
-      assigns(:domain).should eq(domain)
+      expect(assigns(:domain)).to eq(domain)
     end
   end
 
@@ -37,7 +37,7 @@ describe DomainsController do
     it "assigns the requested domain as @domain" do
       domain = Domain.create! valid_attributes
       get :edit, {:id => domain.to_param}, valid_session
-      assigns(:domain).should eq(domain)
+      expect(assigns(:domain)).to eq(domain)
     end
   end
 
@@ -49,20 +49,20 @@ describe DomainsController do
         # specifies that the Domain created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Domain.any_instance.should_receive(:update).with({ "description" => "MyString" })
+        expect_any_instance_of(Domain).to receive(:update).with({ "description" => "MyString" })
         put :update, {:id => domain.to_param, :domain => { "description" => "MyString" }}, valid_session
       end
 
       it "assigns the requested domain as @domain" do
         domain = Domain.create! valid_attributes
         put :update, {:id => domain.to_param, :domain => valid_attributes}, valid_session
-        assigns(:domain).should eq(domain)
+        expect(assigns(:domain)).to eq(domain)
       end
 
       it "redirects to the domain" do
         domain = Domain.create! valid_attributes
         put :update, {:id => domain.to_param, :domain => valid_attributes}, valid_session
-        response.should redirect_to(domain)
+        expect(response).to redirect_to(domain)
       end
     end
 
@@ -72,7 +72,7 @@ describe DomainsController do
         # Trigger the behavior that occurs when invalid params are submitted
         Domain.any_instance.stub(:save).and_return(false)
         put :update, {:id => domain.to_param, :domain => { "domain" => "invalid value" }}, valid_session
-        assigns(:domain).should eq(domain)
+        expect(assigns(:domain)).to eq(domain)
       end
 
       it "re-renders the 'edit' template" do
@@ -80,7 +80,7 @@ describe DomainsController do
         # Trigger the behavior that occurs when invalid params are submitted
         Domain.any_instance.stub(:save).and_return(false)
         put :update, {:id => domain.to_param, :domain => { "domain" => "invalid value" }}, valid_session
-        response.should render_template("edit")
+        expect(response).to render_template("edit")
       end
     end
   end
