@@ -71,14 +71,14 @@ describe UsersController do
     describe "with invalid params" do
       it "assigns a newly created but unsaved user as @user" do
         # Trigger the behavior that occurs when invalid params are submitted
-        User.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(User).to receive(:save).and_return(false)
         post :create, {:user => { "name" => "invalid value" }}, valid_session
         expect(assigns(:user)).to be_a_new(User)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
-        User.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(User).to receive(:save).and_return(false)
         post :create, {:user => { "name" => "invalid value" }}, valid_session
         expect(response).to render_template("new")
       end
@@ -112,7 +112,7 @@ describe UsersController do
       it "assigns the user as @user" do
         user = User.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        User.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(User).to receive(:save).and_return(false)
         put :update, {:id => user.to_param, :user => { "name" => "invalid value" }}, valid_session
         expect(assigns(:user)).to eq(user)
       end
@@ -120,7 +120,7 @@ describe UsersController do
       it "re-renders the 'edit' template" do
         user = User.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        User.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(User).to receive(:save).and_return(false)
         put :update, {:id => user.to_param, :user => { "name" => "invalid value" }}, valid_session
         expect(response).to render_template("edit")
       end

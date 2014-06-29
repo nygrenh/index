@@ -71,14 +71,14 @@ describe LinksController do
     describe "with invalid params" do
       it "assigns a newly created but unsaved link as @link" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Link.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Link).to receive(:save).and_return(false)
         post :create, {:link => { "title" => "invalid value" }}, valid_session
         expect(assigns(:link)).to be_a_new(Link)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Link.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Link).to receive(:save).and_return(false)
         post :create, {:link => { "title" => "invalid value" }}, valid_session
         expect(response).to render_template("new")
       end
@@ -114,7 +114,7 @@ describe LinksController do
       it "assigns the link as @link" do
         link = Link.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Link.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Link).to receive(:save).and_return(false)
         put :update, {:id => link.to_param, :link => { "title" => "invalid value" }}, valid_session
         expect(assigns(:link)).to eq(link)
       end
@@ -122,7 +122,7 @@ describe LinksController do
       it "re-renders the 'edit' template" do
         link = Link.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Link.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Link).to receive(:save).and_return(false)
         put :update, {:id => link.to_param, :link => { "title" => "invalid value" }}, valid_session
         expect(response).to render_template("edit")
       end

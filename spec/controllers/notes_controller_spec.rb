@@ -89,14 +89,14 @@ describe NotesController do
     describe "with invalid params" do
       it "assigns a newly created but unsaved note as @note" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Note.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Note).to receive(:save).and_return(false)
         post :create, {:note => { "name" => "invalid value" }}, valid_session
         expect(assigns(:note)).to be_a_new(Note)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Note.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Note).to receive(:save).and_return(false)
         post :create, {:note => { "name" => "invalid value" }}, valid_session
         expect(response).to render_template("new")
       end
@@ -132,7 +132,7 @@ describe NotesController do
       it "assigns the note as @note" do
         note = Note.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Note.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Note).to receive(:save).and_return(false)
         put :update, {:id => note.to_param, :note => { "name" => "invalid value" }}, valid_session
         expect(assigns(:note)).to eq(note)
       end
@@ -140,7 +140,7 @@ describe NotesController do
       it "re-renders the 'edit' template" do
         note = Note.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Note.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Note).to receive(:save).and_return(false)
         put :update, {:id => note.to_param, :note => { "name" => "invalid value" }}, valid_session
         expect(response).to render_template("edit")
       end

@@ -70,7 +70,7 @@ describe DomainsController do
       it "assigns the domain as @domain" do
         domain = Domain.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Domain.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Domain).to receive(:save).and_return(false)
         put :update, {:id => domain.to_param, :domain => { "domain" => "invalid value" }}, valid_session
         expect(assigns(:domain)).to eq(domain)
       end
@@ -78,7 +78,7 @@ describe DomainsController do
       it "re-renders the 'edit' template" do
         domain = Domain.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Domain.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Domain).to receive(:save).and_return(false)
         put :update, {:id => domain.to_param, :domain => { "domain" => "invalid value" }}, valid_session
         expect(response).to render_template("edit")
       end

@@ -70,7 +70,7 @@ describe TagsController do
       it "assigns the tag as @tag" do
         tag = Tag.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Tag.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Tag).to receive(:save).and_return(false)
         put :update, {:id => tag.to_param, :tag => { "name" => "invalid value" }}, valid_session
         expect(assigns(:tag)).to eq(tag)
       end
@@ -78,7 +78,7 @@ describe TagsController do
       it "re-renders the 'edit' template" do
         tag = Tag.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Tag.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Tag).to receive(:save).and_return(false)
         put :update, {:id => tag.to_param, :tag => { "name" => "invalid value" }}, valid_session
         expect(response).to render_template("edit")
       end
