@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-describe "Notes" do
-  describe "GET /notes" do
-    it "redirects user if not signed in" do
-      get notes_path
-      expect(response.status).to be(302)
+describe 'Notes' do
+  describe 'GET /notes response' do
+    subject(:response) { get domains_path }
+    context 'if not logged in' do
+      it { is_expected.to be(302) }
     end
   end
 end

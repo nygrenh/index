@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-describe "Links" do
-  describe "GET /links" do
-    it "redirects user if not signed in" do
-      get links_path
-      expect(response.status).to be(302)
+describe 'Links' do
+  describe 'GET /links response' do
+    subject(:response) { get domains_path }
+    context 'if not logged in' do
+      it { is_expected.to be(302) }
     end
   end
 end
