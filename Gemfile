@@ -64,6 +64,8 @@ group :test do
   gem 'launchy'
   # Stubs and mocks for testing
   gem 'rspec-activemodel-mocks'
+  # Matchers for common Rails functionality
+  gem 'shoulda-matchers', require: false
   gem 'simplecov', require: false
   gem 'coveralls', require: false
 end

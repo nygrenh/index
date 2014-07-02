@@ -1,25 +1,13 @@
 require 'rails_helper'
 
 describe User do
-  let(:user)  { FactoryGirl.build(:user) }
+  subject(:user)  { FactoryGirl.build(:user) }
+
   it { expect(user).to be_valid }
-
-  context 'without name' do
-    let(:user)  { FactoryGirl.build(:user, name: nil) }
-    it { expect(user).not_to be_valid }
-  end
-
-  context 'without unique name' do
-    let(:user2)  { FactoryGirl.create(:user) }
-    it 'should not be valid' do
-      expect(user2).to be_valid
-      expect(user).not_to be_valid
-    end
-  end
-
-  context 'without password' do
-    let(:user)  { FactoryGirl.build(:user, password: nil) }
-    it { expect(user).not_to be_valid }
-  end
-
+  it { is_expected.to have_many(:links).dependent(:destroy) }
+  it { is_expected.to have_many(:notes).dependent(:destroy) }
+  it { is_expected.to have_many(:tags).dependent(:destroy) }
+  it { is_expected.to validate_presence_of(:name) }
+  it { is_expected.to validate_uniqueness_of(:name) }
+  it { is_expected.to have_secure_password }
 end

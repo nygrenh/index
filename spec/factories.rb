@@ -6,6 +6,6 @@ FactoryGirl.define do
   end
 
   factory :link do
-  	url 'http://www.example.com/'
+    url 'http://www.example.com/'
   end
 end
