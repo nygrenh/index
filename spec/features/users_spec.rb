@@ -14,6 +14,16 @@ describe 'User' do
       expect(page).to have_content("You've logged in.")
     end
 
+    context 'with wrong letter case on name' do
+      it 'can log in' do
+        visit new_session_path
+        fill_in('name', with: user.name.downcase)
+        fill_in('password', with: user.password)
+        click_button('Log in')
+        expect(page).to have_content("You've logged in.")
+      end
+    end
+
     it 'cannot log in with incorrect password' do
       visit new_session_path
       fill_in('name', with: user.name)
