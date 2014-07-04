@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "tags/show" do
+describe "tags/show.haml" do
   before(:each) do
     @tag = assign(:tag, stub_model(Tag,
       :name => "Name",

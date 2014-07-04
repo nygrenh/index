@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "notes/show" do
+describe "notes/show.haml" do
   before(:each) do
     @note = assign(:note, stub_model(Note,
       :name => "Name",

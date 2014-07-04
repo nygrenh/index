@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "domains/show" do
+describe "domains/show.haml" do
   before(:each) do
     @domain = assign(:domain, stub_model(Domain,
       :domain => "Domain",
