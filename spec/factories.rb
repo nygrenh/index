@@ -8,4 +8,12 @@ FactoryGirl.define do
   factory :link do
     url 'http://www.example.com/'
   end
+
+  factory :tag do
+    name 'interesting'
+  end
+
+  factory :domain do
+    domain 'example.com'
+  end
 end

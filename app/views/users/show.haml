@@ -1,4 +1,8 @@
 %h1= @user.name
+%div Links: #{ @user.links.count }
+%div Tags: #{ @user.tags.count }
+%div Domains: #{ @user.domains.count }
+%div Notes: #{ @user.notes.count }
 %p
   = link_to 'Edit', edit_user_path(@user), class: 'btn btn-sm btn-default'
   = link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-default'
