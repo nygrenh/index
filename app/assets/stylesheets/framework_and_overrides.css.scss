@@ -67,11 +67,17 @@ h1 {
 }
 @media (min-width: $grid-float-breakpoint) {
   nav {
-    li.active {
-      border-bottom: 3px solid #a8a8a8;
+    li {
+      margin-left: 3px;
+      margin-right: 3px;
       a {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
         background: transparent !important;
       }
+    }
+    li.active, li:hover {
+      border-bottom: 3px solid #a8a8a8;
     }
   }
 }
