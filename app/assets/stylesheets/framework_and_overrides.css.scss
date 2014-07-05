@@ -49,10 +49,13 @@ section {
   .navbar-brand {
     font-weight: bold;
   }
-a:hover{
+a:hover, a:active, a:focus {
   background: transparent !important;
   color: red !important;
   text-decoration: none;
+}
+a {
+   outline: 0 !important;
 }
 ul.nobullets {
   list-style-type: none;
