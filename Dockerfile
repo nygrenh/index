@@ -19,10 +19,16 @@ RUN gem install bundler
 # Install the app
 ADD . /home/rails/index
 RUN chown -R rails:rails /home/rails/index
-RUN su -c "cd ~/index; RAILS_ENV=development bundle install --path vendor/bundler" -s /bin/sh rails
-RUN su -c "cd ~/index; RAILS_ENV=development bundle exec rake db:migrate" -s /bin/sh rails
-RUN su -c "cd ~/index; RAILS_ENV=development bundle exec rake assets:precompile" -s /bin/sh rails
+USER rails
+WORKDIR /home/rails/index
+
+ENV RAILS_ENV development
+RUN bundle install --path vendor/bundler
+RUN bundle exec rake db:migrate
+RUN bundle exec rake assets:precompile
+
+RUN echo SECRET_TOKEN=$(bundle exec rake secret) > .env
 
 EXPOSE 3000
 
-CMD ["su", "-c", "cd ~/index; RAILS_ENV=development bundle exec rails s", "-s", "/bin/sh", "rails"]
+CMD [ "/usr/local/bin/bundle", "exec", "rails", "s" ]
