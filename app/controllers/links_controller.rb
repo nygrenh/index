@@ -58,47 +58,45 @@ class LinksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_link
-      @link = Link.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def link_params
-      params.require(:link).permit(:title, :url, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_link
+    @link = Link.find(params[:id])
+  end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def link_params
+    params.require(:link).permit(:title, :url, :description)
+  end
 
-    def associate_with_domain
-      domain_s = URI.parse(@link.url).host.gsub(/^www\./, '')
-      domain = Domain.find_by domain:domain_s, user_id:current_user.id
-      if(domain.nil?)
-        domain = Domain.create domain:domain_s, user_id:current_user.id
-      end
-      @link.domain = domain
-      @link.save
+  def associate_with_domain
+    domain_s = URI.parse(@link.url).host.gsub(/^www\./, '')
+    domain = Domain.find_by domain: domain_s, user_id: current_user.id
+    if domain.nil?
+      domain = Domain.create domain: domain_s, user_id: current_user.id
     end
+    @link.domain = domain
+    @link.save
+  end
 
-    def update_tags(tagstring)
-      @link.tags = []
-      if tagstring.nil?
-        return
-      end
-      tags = tagstring.split(', ')
-      tags.each do |t|
-        tag = tag(t)
-        @link.tags << tag unless @link.tags.exists? tag
-      end
+  def update_tags(tagstring)
+    @link.tags = []
+    return if tagstring.nil?
+    tags = tagstring.split(', ')
+    tags.each do |t|
+      tag = tag(t)
+      @link.tags << tag unless @link.tags.exists? tag
     end
+  end
 
-    def tag(name)
-      tag = Tag.where("lower(name) = ?", name.downcase).find_by(user_id:current_user.id)
-      if tag.nil?
-        tag = Tag.create name:name, tag_type:'default', user_id:current_user.id
-      end
-      tag
+  def tag(name)
+    tag = Tag.where('lower(name) = ?', name.downcase).find_by(user_id: current_user.id)
+    if tag.nil?
+      tag = Tag.create name: name, tag_type: 'default', user_id: current_user.id
     end
+    tag
+  end
 
-    def set_tag_s
-      @tag_s = @link.tags.map(&:name).to_sentence(last_word_connector: ", ", two_words_connector: ", ")
-    end
+  def set_tag_s
+    @tag_s = @link.tags.map(&:name).to_sentence(last_word_connector: ', ', two_words_connector: ', ')
+  end
 end
