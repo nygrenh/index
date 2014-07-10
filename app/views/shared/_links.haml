@@ -8,6 +8,8 @@
     %div
       - link.tags.each do |tag|
         %span{:class => "label label-#{tag.tag_type}"}= link_to tag.name, tag
+    %div
+      %span.timestamp= link.timestamp
       %span= link_to 'Show', link
       %span= link_to 'Edit', edit_link_path(link)
       %span= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' }
