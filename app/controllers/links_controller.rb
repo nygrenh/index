@@ -5,7 +5,12 @@ class LinksController < ApplicationController
   # GET /links
   # GET /links.json
   def index
-    @links = Link.order(created_at: :desc).where(user_id: current_user.id).page(params[:page])
+    @links = Link
+             .includes(:tags, :domain, :user)
+             .order(created_at: :desc)
+             .where(user_id: current_user.id)
+             .page(params[:page])
+             .load
   end
 
   # GET /links/1
@@ -76,6 +81,8 @@ class LinksController < ApplicationController
     end
     @link.domain = domain
     @link.save
+    domain.link_count = domain.links.count
+    domain.save
   end
 
   def update_tags(tagstring)

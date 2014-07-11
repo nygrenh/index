@@ -59,6 +59,7 @@ group :development do
   # better error messages
   gem 'better_errors', '~> 1.1.0'
   gem 'binding_of_caller', '~> 0.7.2'
+  gem 'rack-mini-profiler'
 end
 
 group :test do
