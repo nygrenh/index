@@ -5,7 +5,7 @@ class DomainsController < ApplicationController
   # GET /domains
   # GET /domains.json
   def index
-    @domains = Domain.where(user_id:current_user.id).sort_by{|d| -d.links.count}
+    @domains = Domain.where(user_id: current_user.id).sort_by { |d| -d.link_count }
   end
 
   # GET /domains/1
@@ -24,13 +24,14 @@ class DomainsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_domain
-      @domain = Domain.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def domain_params
-      params.require(:domain).permit(:description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_domain
+    @domain = Domain.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def domain_params
+    params.require(:domain).permit(:description)
+  end
 end
