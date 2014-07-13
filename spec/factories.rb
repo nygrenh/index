@@ -16,4 +16,8 @@ FactoryGirl.define do
   factory :domain do
     domain 'example.com'
   end
+
+  factory :note do
+    name 'note'
+  end
 end

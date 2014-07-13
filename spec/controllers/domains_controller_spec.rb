@@ -3,12 +3,9 @@ require 'rails_helper'
 describe DomainsController do
 
   let(:user) { FactoryGirl.create(:user) }
-  let!(:domain) { FactoryGirl.create(:domain, user_id: user.id) }
-
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # DomainsController. Be sure to keep this updated too.
   let(:valid_session) { { user_id: user.id } }
+  let(:valid_attributes) { FactoryGirl.attributes_for(:domain) }
+  let!(:domain) { FactoryGirl.create(:domain, user_id: user.id) }
 
   describe 'GET index' do
     it 'assigns all domains as @domains' do
@@ -34,21 +31,17 @@ describe DomainsController do
   describe 'PUT update' do
     describe 'with valid params' do
       it 'updates the requested domain' do
-        # Assuming there are no other domains in the database, this
-        # specifies that the Domain created on the 'let!' above
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
         expect_any_instance_of(Domain).to receive(:update).with('description' => 'MyString')
         put :update, { id: domain.to_param, domain: { 'description' => 'MyString' } }, valid_session
       end
 
       it 'assigns the requested domain as @domain' do
-        put :update, { id: domain.to_param, domain: FactoryGirl.attributes_for(:domain) }, valid_session
+        put :update, { id: domain.to_param, domain: valid_attributes }, valid_session
         expect(assigns(:domain)).to eq(domain)
       end
 
       it 'redirects to the domain' do
-        put :update, { id: domain.to_param, domain: FactoryGirl.attributes_for(:domain) }, valid_session
+        put :update, { id: domain.to_param, domain: valid_attributes }, valid_session
         expect(response).to redirect_to(domain)
       end
     end
