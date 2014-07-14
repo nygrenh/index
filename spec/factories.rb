@@ -18,6 +18,6 @@ FactoryGirl.define do
   end
 
   factory :note do
-    name 'note'
+    text 'note'
   end
 end
