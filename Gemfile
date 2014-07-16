@@ -56,6 +56,9 @@ end
 group :development do
   gem 'rails_layout'
   gem 'byebug'
+  # better error messages
+  gem 'better_errors', '~> 1.1.0'
+  gem 'binding_of_caller', '~> 0.7.2'
 end
 
 group :test do
