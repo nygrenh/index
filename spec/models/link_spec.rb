@@ -14,6 +14,13 @@ describe Link do
     it { expect(link).not_to be_valid }
   end
 
+  context 'when created without title' do
+    let(:link)  { FactoryGirl.create(:link, title: nil) }
+    it 'title should be the url' do
+      expect(link.title).to eq(link.url)
+    end
+  end
+
   describe '.timestamp' do
     subject(:timestamp) { link.timestamp }
     let(:time) { Time.utc(2014, 07, 9, 5) }

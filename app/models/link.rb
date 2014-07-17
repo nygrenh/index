@@ -8,6 +8,8 @@ class Link < ActiveRecord::Base
   validates_presence_of :url
   validates :url, format: /http.*\..*/
 
+  before_save :check_title
+
   def timestamp
     diff = Time.now.to_i - created_at.to_i
     return created_at.strftime('%B %-d %Y') if diff >= 1.year
@@ -21,5 +23,9 @@ class Link < ActiveRecord::Base
 
   def time_s(diff, divisor, word)
     pluralize(diff / divisor, word) + ' ago'
+  end
+
+  def check_title
+    self.title = url if title.blank?
   end
 end
