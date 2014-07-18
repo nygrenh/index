@@ -11,11 +11,12 @@
       %ul.nav.navbar-nav.navigation-links
         = render 'layouts/navigation_links'
       - if current_user
-        %ul.nav.navbar-nav.navbar-right
-          %li.dropdown{class: params[:controller] == 'users' && 'active'}
+        %ul.nav.navbar-nav.navbar-right.navigation-links
+          %li.dropdown.navigation-item{class: params[:controller] == 'users' && 'active'}
             %a.dropdown-toggle{'data-toggle' => 'dropdown', 'href' => '#'}
               %i.fa.fa-user.fa-fw
               = current_user.name
+              %span.caret
             %ul.dropdown-menu
               %li
                 = link_to 'Account', current_user
