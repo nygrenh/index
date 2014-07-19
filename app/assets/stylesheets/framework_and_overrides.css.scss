@@ -1,5 +1,6 @@
 $input-border-focus: #bbb;
 $navbar-default-link-hover-color: red;
+$link-color: #000;
 
 // import the CSS framework
 @import "bootstrap";
@@ -49,22 +50,6 @@ section {
   .navbar-brand {
     font-weight: bold;
   }
-a:hover, a:active, a:focus {
-  background: transparent !important;
-  color: red !important;
-  text-decoration: none;
-}
-a {
-   outline: 0 !important;
-}
-ul.nobullets {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-h1 {
-  margin-top: 0;
-}
 @media (min-width: $grid-float-breakpoint) {
   nav {
     ul.navigation-links {

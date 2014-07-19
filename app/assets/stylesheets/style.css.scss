@@ -1,0 +1,35 @@
+.entry {
+  padding-bottom: 20px;
+}
+.link a:hover {
+    color: red !important;
+}
+.domain, .domain a {
+  color: grey !important;
+}
+.label a {
+  color: white !important;
+}
+.label a:hover {
+  text-decoration: underline;
+}
+.description {
+  color: grey;
+}
+
+a:hover, a:active, a:focus {
+  background: transparent !important;
+  color: red !important;
+  text-decoration: none;
+}
+a {
+   outline: 0 !important;
+}
+ul.nobullets {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  margin-top: 0;
+}

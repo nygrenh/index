@@ -1,25 +1,3 @@
 // Place all the styles related to the links controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.entry {
-  padding-bottom: 20px;
-}
-.link a {
-	text-decoration: none;
-    color: #333332 !important; 
-}
-.link a:hover {
-    color: red !important; 
-}
-.domain, .domain a {
-	color: grey !important;
-}
-.label a {
-	color: white !important;
-}
-.label a:hover {
-	text-decoration: underline;
-}
-.description {
-	color: grey;
-}
