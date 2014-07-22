@@ -60,7 +60,13 @@ class LinksController < ApplicationController
   # DELETE /links/1
   # DELETE /links/1.json
   def destroy
-    create_response(@link.destroy, @link, 'destroyed', links_url, links_url)
+    domain = @link.domain
+    result = @link.destroy
+    if result
+      update_tags('')
+      domain.link_count -= 1 if domain && !domain.destroyed?
+    end
+    create_response(result, @link, 'destroyed', links_url, links_url)
   end
 
   private
@@ -87,14 +93,22 @@ class LinksController < ApplicationController
   end
 
   def update_tags(tagstring)
-    @link.tags = []
     return if tagstring.nil?
-    tags = tagstring.split(', ')
+    old_tags = @link.tags
+    new_tags = []
+    tagstring.split(', ').each do |t|
+      new_tags << tag(t)
+    end
+    @link.tags = []
+    @link.tags = new_tags
+    update_tag_link_counts(old_tags)
+    update_tag_link_counts(new_tags)
+  end
+
+  def update_tag_link_counts(tags)
     tags.each do |t|
-      tag = tag(t)
-      @link.tags << tag unless @link.tags.exists? tag
-      tag.link_count = tag.links.count
-      tag.save
+      t.link_count = t.links.count
+      t.save
     end
   end
 
@@ -110,7 +124,4 @@ class LinksController < ApplicationController
     @tag_s = @link.tags.map(&:name).to_sentence(last_word_connector: ', ', two_words_connector: ', ')
   end
 
-  def update_counts
-
-  end
 end
