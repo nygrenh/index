@@ -6,7 +6,7 @@ class Link < ActiveRecord::Base
   belongs_to :user
   belongs_to :domain, dependent: :destroy
   validates_presence_of :url
-  validates :url, format: /http.*\..*/
+  validates :url, format: /\Ahttp.*\..*\z/
 
   before_save :check_title
 
