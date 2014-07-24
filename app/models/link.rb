@@ -4,11 +4,12 @@ class Link < ActiveRecord::Base
   has_many :link_tags
   has_many :tags, through: :link_tags, dependent: :destroy
   belongs_to :user
-  belongs_to :domain, dependent: :destroy
+  belongs_to :domain
   validates_presence_of :url
   validates :url, format: /\Ahttp.*\..*\z/
 
   before_save :check_title
+  after_destroy :clean_domains
 
   def timestamp
     diff = Time.now.to_i - created_at.to_i
@@ -27,5 +28,9 @@ class Link < ActiveRecord::Base
 
   def check_title
     self.title = url if title.blank?
+  end
+
+  def clean_domains
+    domain.destroy if domain && domain.links.count.zero?
   end
 end
