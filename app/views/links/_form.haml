@@ -1,12 +1,13 @@
 = form_for(@link) do |f|
   - if @link.errors.any?
-    #error_explanation
-      %h2
+    #error_explanation.panel.panel-danger
+      .panel-heading
         = pluralize(@link.errors.count, "error")
         prohibited this link from being saved:
-      %ul
-        - @link.errors.full_messages.each do |msg|
-          %li= msg
+      .panel-body
+        %ul
+          - @link.errors.full_messages.each do |msg|
+            %li= msg
   .field
     = f.label :title
     = f.text_field :title, class: "form-control", placeholder: "Title"
