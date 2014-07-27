@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20140721151002) do
     t.text     "description"
     t.string   "source"
     t.integer  "user_id"
-    t.string   "domain_id"
+    t.integer  "domain_id",   limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end

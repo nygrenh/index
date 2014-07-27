@@ -4,7 +4,12 @@ class AddLinkCountToDomains < ActiveRecord::Migration
       t.integer :link_count, default: 0
     end
     reversible do |domain|
-      domain.up { execute("update domains set link_count = (select count(*) from 'links'  where 'links'.'domain_id' = 'domains'.'id')") }
+      domain.up do execute("update domains
+        set link_count = (
+          select count(*) from links
+          where links.domain_id = domains.id
+        )")
+      end
     end
   end
 end

@@ -7,10 +7,10 @@ class AddLinkCountToTags < ActiveRecord::Migration
       tag.up do
         execute("update tags
         set link_count = (
-          select count(*) from 'links'
-          inner join 'link_tags'
-          on 'links'.'id' = 'link_tags'.'link_id'
-          where 'link_tags'.'tag_id' = 'tags'.'id'
+          select count(*) from links
+          inner join link_tags
+          on links.id = link_tags.link_id
+          where link_tags.tag_id = tags.id
         )")
       end
     end
