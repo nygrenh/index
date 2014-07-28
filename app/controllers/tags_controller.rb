@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  before_action :set_tag, only: [:show, :edit, :update, :destroy]
+  before_action :set_tag, only: [:show, :edit, :update, :destroy, :change_color]
   before_action :ensure_that_signed_in
 
   # GET /tags
@@ -25,6 +25,12 @@ class TagsController < ApplicationController
     create_response(@tag.update(tag_params), @tag, 'updated', @tag, 'edit')
   end
 
+  # PATCH /tags/1/change_color
+  def change_color
+    @tag.update(tag_type: params[:color]) if allowed_color
+    redirect_to @tag
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -34,6 +40,11 @@ class TagsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def tag_params
-    params.require(:tag).permit(:name, :description, :tag_type)
+    params.require(:tag).permit(:name, :description)
+  end
+
+  def allowed_color
+    allowed_colors = %w(default primary success info warning danger).to_set
+    allowed_colors.include?(params[:color])
   end
 end

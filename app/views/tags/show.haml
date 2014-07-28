@@ -3,4 +3,11 @@
   = link_to 'Edit', edit_tag_path(@tag), class: 'btn btn-sm btn-default'
 %p
   = markdown @tag.description
+#color
+  = link_to 'Grey', change_color_tag_path(@tag, color: :default), method: :patch
+  = link_to 'Blue', change_color_tag_path(@tag, color: :primary), method: :patch
+  = link_to 'Green', change_color_tag_path(@tag, color: :success), method: :patch
+  = link_to 'Light Blue', change_color_tag_path(@tag, color: :info), method: :patch
+  = link_to 'Yellow', change_color_tag_path(@tag, color: :warning), method: :patch
+  = link_to 'Red', change_color_tag_path(@tag, color: :danger), method: :patch
 = render 'shared/links', links: @tag.links
