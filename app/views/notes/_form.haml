@@ -1,7 +1,7 @@
 = form_for(@note) do |f|
   - if @note.errors.any?
-    #error_explanation
-      %h2
+    #error_explanation.panel.panel-danger
+      .panel-heading
         = pluralize(@note.errors.count, "error")
         prohibited this note from being saved:
       %ul
@@ -9,11 +9,9 @@
           %li= msg
   .field
     = f.label :name
-    %br/
     = f.text_field :name, class: "form-control", placeholder: "Name"
   .field
     = f.label :text
-    %br/
     = f.text_area :text, class: "form-control", placeholder: "The content", rows: 10
   .actions
-    = f.submit class: 'btn btn-default'
+    = f.button class: 'btn btn-default', data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> #{ f.submit.to_str.include?("Create") ? "Creating..." : "Updating..."}"}
