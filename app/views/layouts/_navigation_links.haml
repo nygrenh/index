@@ -1,13 +1,9 @@
-%li.navigation-item{class: params[:controller] == 'links' && 'active'}
-  = link_to "Links", links_path
-%li.navigation-item{class: params[:controller] == 'tags' && 'active'}
-  = link_to "Tags", tags_path
-%li.navigation-item{class: params[:controller] == 'domains' && 'active'}
-  = link_to "Domains", domains_path
-%li.navigation-item{class: params[:controller] == 'notes' && 'active'}
-  = link_to "Notes", notes_path
-- unless current_user
-  %li.navigation-item
-    = link_to "Log in", new_session_path
-  %li.navigation-item
-    = link_to "Register", new_user_path
+- if current_user
+  %li.navigation-item{class: params[:controller] == 'links' && 'active'}
+    = link_to "Links", links_path
+  %li.navigation-item{class: params[:controller] == 'tags' && 'active'}
+    = link_to "Tags", tags_path
+  %li.navigation-item{class: params[:controller] == 'domains' && 'active'}
+    = link_to "Domains", domains_path
+  %li.navigation-item{class: params[:controller] == 'notes' && 'active'}
+    = link_to "Notes", notes_path
