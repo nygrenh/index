@@ -63,4 +63,27 @@ describe TagsController do
     end
   end
 
+  describe 'PATCH change color' do
+    let(:color) { 'info' }
+
+    it 'redirects to the tag' do
+      patch :change_color, { id: tag.to_param, tag: tag, color: color }, valid_session
+      expect(response).to redirect_to(tag)
+    end
+
+    it 'updates the color' do
+      expect_any_instance_of(Tag).to receive(:update).with(tag_type: color)
+      patch :change_color, { id: tag.to_param, tag: tag, color: color }, valid_session
+    end
+
+    context 'with an invalid color' do
+      let(:color) { 'invalid' }
+
+      it "doesn't update the color" do
+        expect_any_instance_of(Tag).not_to receive(:update)
+        patch :change_color, { id: tag.to_param, tag: tag, color: color }, valid_session
+      end
+    end
+  end
+
 end
