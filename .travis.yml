@@ -14,3 +14,5 @@ deploy:
   on:
     repo: nygrenh/index
   run: "rake db:migrate"
+before_script:
+  - psql -c 'create database index_test;' -U postgres
