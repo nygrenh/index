@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140721151002) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "domains", force: true do |t|
     t.string   "domain"
     t.text     "description"
@@ -35,9 +38,9 @@ ActiveRecord::Schema.define(version: 20140721151002) do
     t.text     "description"
     t.string   "source"
     t.integer  "user_id"
-    t.integer  "domain_id",   limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "domain_id"
   end
 
   create_table "links_tags", id: false, force: true do |t|

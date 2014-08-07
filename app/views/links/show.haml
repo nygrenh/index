@@ -1,7 +1,7 @@
 %h1
   = @link.title
   %small
-    (#{link_to @link.domain.domain, @link.domain})
+    (#{link_to @link.domain.domain, @link.domain if @link.domain})
 %p
   = link_to @link.url, @link.url
 %p

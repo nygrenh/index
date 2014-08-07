@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "links/show.haml" do
   before(:each) do
-    Domain.create domain:"test.com"
+    FactoryGirl.build(:domain, domain: 'test.com')
     @link = assign(:link, stub_model(Link,
       :title => "Title",
       :url => "Url",
@@ -19,6 +19,5 @@ describe "links/show.haml" do
     expect(rendered).to match(/Title/)
     expect(rendered).to match(/Url/)
     expect(rendered).to match(/MyText/)
-    expect(rendered).to match(/test.com/)
   end
 end
