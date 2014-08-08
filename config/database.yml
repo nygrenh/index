@@ -18,3 +18,5 @@ test:
 production:
   <<: *default
   database: index_production
+  host: <%= ENV.fetch('POSTGRES_PORT_5432_TCP_ADDR', 'localhost') %>
+  port: <%= ENV.fetch('POSTGRES_PORT_5432_TCP_PORT', '5432') %>
