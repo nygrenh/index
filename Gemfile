@@ -48,6 +48,9 @@ gem 'haml-rails'
 # Webserver
 gem 'puma'
 
+# Search
+gem 'pg_search'
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'

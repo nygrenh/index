@@ -12,6 +12,7 @@
         = render 'layouts/navigation_links'
       - if current_user
         %ul.nav.navbar-nav.navbar-right.navigation-links
+          = render 'layouts/search'
           %li.dropdown.navigation-item{class: params[:controller] == 'users' && 'active'}
             %a.dropdown-toggle{'data-toggle' => 'dropdown', 'href' => '#'}
               %i.fa.fa-user.fa-fw

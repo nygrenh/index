@@ -1,5 +1,8 @@
 class Link < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
+  include PgSearch
+
+  multisearchable against: [:title, :url, :description]
 
   has_many :link_tags
   has_many :tags, through: :link_tags, dependent: :destroy
