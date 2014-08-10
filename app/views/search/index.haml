@@ -1,4 +1,4 @@
 %h1 Search results
-= @results.each do |result|
-  %p
-    = result.content
+- @results.each do |result|
+  - link = Link.find_by id: result.searchable_id
+  = render 'shared/link', link: link if link
