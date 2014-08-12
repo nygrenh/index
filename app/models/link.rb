@@ -6,7 +6,18 @@ class Link < ActiveRecord::Base
                   against: [:title, :url, :description],
                   associated_against: {
                     tags: :name
-                  }
+                  },
+                  using: {
+                    tsearch: {
+                      dictionary: 'english',
+                      any_word: true
+                    },
+                    dmetaphone: {
+                      any_word: true,
+                      only: [:title, :url, :name]
+                    }
+                  },
+                  ranked_by: ':tsearch + (0.5 * :dmetaphone)'
 
   has_many :link_tags
   has_many :tags, through: :link_tags, dependent: :destroy
