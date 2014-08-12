@@ -1,6 +1,6 @@
 %h1= @domain.domain
 %p
-  = link_to 'Edit', edit_domain_path(@domain)
+  = link_to 'Edit', edit_domain_path(@domain), class: 'btn btn-sm btn-default'
 %p
   = markdown @domain.description
 = render 'shared/links', links: @domain.links

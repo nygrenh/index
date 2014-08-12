@@ -12,4 +12,4 @@
     %br/
     = f.text_area :description, class: "form-control", placeholder: "Something descriptive", rows: 10
   .actions
-    = f.submit class: 'btn btn-sm btn-default'
+    = f.button class: 'btn btn-sm btn-default', data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Updating..."}

@@ -1,3 +1,6 @@
 = form_tag search_path, method: :get, class: 'navbar-form navbar-left' do
-  = text_field_tag :q, params[:q], class: 'form-control'
-  = submit_tag "Search", name: nil, class: 'btn btn-default'
+  .input-group
+    = text_field_tag :q, params[:q], class: 'form-control', placeholder: 'Search'
+    %span.input-group-btn
+      = button_tag type: 'submit', name: nil, class: 'btn btn-default' do
+        %i.fa.fa-search
