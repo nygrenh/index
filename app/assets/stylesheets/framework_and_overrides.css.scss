@@ -64,7 +64,7 @@ section {
         }
       }
       li.navigation-item.active, li.navigation-item:hover {
-        border-bottom: 3px solid #a8a8a8;
+        box-shadow: inset #a8a8a8 0 -3px 0 0;
       }
     }
   }
