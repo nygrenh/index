@@ -1,10 +1,11 @@
 language: ruby
 rvm:
 - 2.0.0
+before_script:
+  - psql -c 'create database index_test;' -U postgres
 script:
 - bundle exec rake db:migrate --trace
 - RAILS_ENV=test bundle exec rake db:migrate --trace
-- bundle exec rake db:test:prepare
 - bundle exec rspec -fd spec/
 deploy:
   provider: heroku
@@ -14,5 +15,3 @@ deploy:
   on:
     repo: nygrenh/index
   run: "rake db:migrate"
-before_script:
-  - psql -c 'create database index_test;' -U postgres
