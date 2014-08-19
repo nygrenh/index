@@ -4,9 +4,7 @@
     %span.domain
       (#{link_to link.domain.domain, link.domain if link.domain})
   .description= link.description
-  %div
-    - link.tags.each do |tag|
-      %span{:class => "label label-#{tag.tag_type}"}= link_to tag.name, tag
+  = render 'shared/tags', tags: link.tags
   %div
     %span.timestamp= link.timestamp
     %span= link_to 'Show', link

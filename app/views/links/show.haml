@@ -7,6 +7,8 @@
 %p
   = @link.description
 %p
+  = render 'shared/tags', tags: @link.tags
+%p
   = link_to 'Edit', edit_link_path(@link), class: 'btn btn-sm btn-default'
 %label View this link on:
 %p
