@@ -27,6 +27,6 @@ describe 'links/show.haml' do
 
   it 'renders tags' do
     render
-    expect(rendered).not_to match(tag.name)
+    expect(rendered).to match(tag.name)
   end
 end
