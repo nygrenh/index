@@ -10,4 +10,5 @@
   = link_to 'Red', change_color_tag_path(@tag, color: :danger), method: :patch, class: 'btn btn-sm btn-danger'
 %p
   = markdown @tag.description
-= render 'shared/links', links: @tag.links
+= render 'shared/links', links: @links if @links
+= paginate @links if  @links
