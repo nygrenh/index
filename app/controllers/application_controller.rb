@@ -28,4 +28,9 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def check_for_permission(item)
+    return if item.user_id == current_user.id
+    redirect_to root_path, alert: "You don't have permission to do that."
+  end
 end
