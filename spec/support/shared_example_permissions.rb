@@ -2,7 +2,7 @@ shared_examples 'a private resource' do
   describe "accessing something you don't own" do
     let(:user) { FactoryGirl.create(:user) }
     let(:another_user) { FactoryGirl.create(:user, name: 'Smith') }
-    let!(:resource) { FactoryGirl.create(resource_type, user_id: another_user.id) }
+    let!(:resource) { FactoryGirl.create(described_class, user_id: another_user.id) }
 
     before :each do
       log_in(name: user.name, password: user.password)

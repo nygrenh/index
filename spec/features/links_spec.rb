@@ -1,7 +1,7 @@
 require 'rails_helper'
 include LoginHelper
 
-describe 'Link' do
+describe Link do
   context 'when not signed in' do
     it 'cannot be created' do
       visit new_link_path
@@ -31,7 +31,5 @@ describe 'Link' do
     end
   end
 
-  it_behaves_like 'a private resource' do
-    let(:resource_type) { :link }
-  end
+  it_behaves_like 'a private resource'
 end
