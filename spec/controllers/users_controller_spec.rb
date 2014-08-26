@@ -98,10 +98,9 @@ describe UsersController do
       end
 
       it 're-renders the "edit" template' do
-        not_logged_in_user = FactoryGirl.create(:user)
         # Trigger the behavior that occurs when invalid params are submitted
         allow_any_instance_of(User).to receive(:save).and_return(false)
-        put :update, { id: not_logged_in_user.to_param, user: { 'name' => 'invalid value' } }, valid_session
+        put :update, { id: user.id, user: { 'name' => 'invalid value' } }, valid_session
         expect(response).to render_template('edit')
       end
     end
