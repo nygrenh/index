@@ -11,10 +11,9 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_that_signed_in
-    if current_user.nil?
-      session[:return_to] = request.url
-      redirect_to new_session_path, notice: 'Please log in.'
-    end
+    return unless current_user.nil?
+    session[:return_to] = request.url
+    redirect_to new_session_path, notice: 'Please log in.'
   end
 
   def create_response(result, object, message, success_destination, fail_destination)
@@ -27,6 +26,20 @@ class ApplicationController < ActionController::Base
         format.json { render json: object.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def create_and_respond(object)
+    respond_to do |format|
+      if object.save
+        format.html { redirect_to object, notice: response_notice(object, "created")}
+      else
+        format.html { render action: 'new' }
+      end
+    end
+  end
+
+  def response_notice(object, action)
+    "#{object.class} was successfully #{action}."
   end
 
   def check_for_permission(item)

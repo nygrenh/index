@@ -5,7 +5,7 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
-    @notes = Note.where user_id:current_user.id
+    @notes = Note.where user_id: current_user.id
   end
 
   # GET /notes/1
@@ -27,7 +27,7 @@ class NotesController < ApplicationController
   def create
     @note = Note.new(note_params)
     @note.user = current_user
-    create_response(@note.save, @note, 'created', @note, 'new')
+    create_and_respond(@note)
   end
 
   # PATCH/PUT /notes/1
@@ -43,14 +43,15 @@ class NotesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_note
-      @note = Note.find(params[:id])
-      check_for_permission(@note)
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def note_params
-      params.require(:note).permit(:name, :text, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_note
+    @note = Note.find(params[:id])
+    check_for_permission(@note)
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def note_params
+    params.require(:note).permit(:name, :text, :user_id)
+  end
 end
