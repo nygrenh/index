@@ -31,9 +31,19 @@ class ApplicationController < ActionController::Base
   def create_and_respond(object)
     respond_to do |format|
       if object.save
-        format.html { redirect_to object, notice: response_notice(object, "created")}
+        format.html { redirect_to object, notice: response_notice(object, 'created') }
       else
         format.html { render action: 'new' }
+      end
+    end
+  end
+
+  def update_and_respond(object, params)
+    respond_to do |format|
+      if object.update(params)
+        format.html { redirect_to object, notice: response_notice(object, 'updated') }
+      else
+        format.html { render action: 'edit' }
       end
     end
   end

@@ -33,7 +33,7 @@ class NotesController < ApplicationController
   # PATCH/PUT /notes/1
   # PATCH/PUT /notes/1.json
   def update
-    create_response(@note.update(note_params), @note, 'updated', @note, 'edit')
+    update_and_respond(@note, note_params)
   end
 
   # DELETE /notes/1

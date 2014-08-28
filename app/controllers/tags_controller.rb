@@ -28,7 +28,7 @@ class TagsController < ApplicationController
   # PATCH/PUT /tags/1
   # PATCH/PUT /tags/1.json
   def update
-    create_response(@tag.update(tag_params), @tag, 'updated', @tag, 'edit')
+    update_and_respond(@tag, tag_params)
   end
 
   # PATCH /tags/1/change_color

@@ -33,8 +33,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    result = @user.update(user_params)
-    create_response(result, @user, 'updated', @user, 'edit')
+    update_and_respond(@user, user_params)
   end
 
   # DELETE /users/1

@@ -20,7 +20,7 @@ class DomainsController < ApplicationController
   # PATCH/PUT /domains/1
   # PATCH/PUT /domains/1.json
   def update
-    create_response(@domain.update(domain_params), @domain, 'updated', @domain, 'edit')
+    update_and_respond(@domain, domain_params)
   end
 
   private
