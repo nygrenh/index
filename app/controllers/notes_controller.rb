@@ -39,7 +39,7 @@ class NotesController < ApplicationController
   # DELETE /notes/1
   # DELETE /notes/1.json
   def destroy
-    create_response(@note.destroy, @note, 'destroyed', notes_url, notes_url)
+    destroy_and_respond(@note)
   end
 
   private

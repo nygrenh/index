@@ -48,6 +48,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def destroy_and_respond(object)
+    object.destroy
+    respond_to do |format|
+      format.html { redirect_to polymorphic_url(object), notice: response_notice(object, 'destroyed') }
+      format.json { head :no_content }
+    end
+  end
+
   def response_notice(object, action)
     "#{object.class} was successfully #{action}."
   end
