@@ -33,8 +33,11 @@ class TagsController < ApplicationController
 
   # PATCH /tags/1/change_color
   def change_color
-    @tag.update(tag_type: params[:color]) if allowed_color
-    redirect_to @tag
+    if allowed_color
+      update_and_respond(@tag, tag_type: params[:color])
+    else
+      redirect_to @tag
+    end
   end
 
   private
