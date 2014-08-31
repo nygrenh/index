@@ -39,7 +39,6 @@ class LinksController < ApplicationController
     @link.user = current_user
     respond_to do |format|
       if @link.save
-        associate_with_domain
         format.html { redirect_to @link, notice: 'Link was successfully created.' }
         format.json { render action: 'show', status: :created, location: @link }
       else
@@ -79,18 +78,6 @@ class LinksController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def link_params
     params.require(:link).permit(:title, :url, :description)
-  end
-
-  def associate_with_domain
-    domain_s = URI.parse(@link.url).host.gsub(/^www\./, '')
-    domain = Domain.find_by domain: domain_s, user_id: current_user.id
-    if domain.nil?
-      domain = Domain.create domain: domain_s, user_id: current_user.id
-    end
-    @link.domain = domain
-    @link.save
-    domain.link_count = domain.links.count
-    domain.save
   end
 
   def update_tags(tagstring)

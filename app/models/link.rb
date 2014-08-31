@@ -27,6 +27,7 @@ class Link < ActiveRecord::Base
   validates :url, format: /\Ahttp.*\..*\z/
 
   before_save :check_title
+  before_save :associate_with_domain
   after_destroy :clean_domains
 
   def timestamp
@@ -50,5 +51,14 @@ class Link < ActiveRecord::Base
 
   def clean_domains
     domain.destroy if domain && domain.links.count.zero?
+  end
+
+  def associate_with_domain
+    domain_s = URI.parse(url).host.gsub(/^www\./, '')
+    domain = Domain.find_by domain: domain_s, user_id: user_id
+    domain = Domain.create domain: domain_s, user_id: user_id if domain.nil?
+    self.domain = domain
+    domain.link_count += 1
+    domain.save
   end
 end

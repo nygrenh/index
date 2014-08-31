@@ -9,6 +9,10 @@ describe Link do
   it { is_expected.to belong_to(:user) }
   it { is_expected.to belong_to(:domain) }
 
+  it 'should have a domain associated' do
+    expect(link.domain).not_to be_nil
+  end
+
   context 'with an invalid url' do
     let(:link)  { FactoryGirl.build(:link, url: 'invalid') }
     it { expect(link).not_to be_valid }
