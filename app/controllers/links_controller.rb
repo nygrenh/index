@@ -37,15 +37,7 @@ class LinksController < ApplicationController
     @link = Link.new(link_params)
     update_tags(params[:link][:tags])
     @link.user = current_user
-    respond_to do |format|
-      if @link.save
-        format.html { redirect_to @link, notice: 'Link was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @link }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @link.errors, status: :unprocessable_entity }
-      end
-    end
+    create_and_respond(@link)
   end
 
   # PATCH/PUT /links/1
