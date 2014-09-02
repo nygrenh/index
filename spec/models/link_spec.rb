@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Link do
-  subject(:link)  { FactoryGirl.create(:link) }
+  subject(:link) { FactoryGirl.create(:link) }
 
   it { is_expected.to be_valid }
   it { is_expected.to validate_presence_of(:url) }
@@ -22,6 +22,22 @@ describe Link do
     let(:link)  { FactoryGirl.create(:link, title: nil) }
     it 'title should be the url' do
       expect(link.title).to eq(link.url)
+    end
+  end
+
+  context 'with a tagstring' do
+    let(:link) { FactoryGirl.build(:link) }
+    let(:tags) { 'tag 1, tag 2, tag 3' }
+    before :each do
+      link.tagstring = tags
+    end
+    context 'when saved' do
+      before :each do
+        link.save
+      end
+      it 'should have tags' do
+        expect(link.tags.count).to eq(3)
+      end
     end
   end
 

@@ -1,6 +1,7 @@
 class LinksController < ApplicationController
   before_action :set_link, only: [:show, :edit, :update, :destroy]
   before_action :ensure_that_signed_in
+  before_action :set_tagstring, only: [:update]
 
   # GET /links
   # GET /links.json
@@ -35,8 +36,8 @@ class LinksController < ApplicationController
   # POST /links.json
   def create
     @link = Link.new(link_params)
-    update_tags(params[:link][:tags])
     @link.user = current_user
+    set_tagstring
     create_and_respond(@link)
   end
 
@@ -44,7 +45,6 @@ class LinksController < ApplicationController
   # PATCH/PUT /links/1.json
   def update
     result = @link.update(link_params)
-    update_tags(params[:link][:tags]) if result
     create_response(result, @link, 'updated', @link, 'edit')
   end
 
@@ -54,7 +54,6 @@ class LinksController < ApplicationController
     domain = @link.domain
     result = @link.destroy
     if result
-      update_tags('')
       domain.link_count -= 1 if domain && !domain.destroyed?
     end
     create_response(result, @link, 'destroyed', links_url, links_url)
@@ -72,36 +71,11 @@ class LinksController < ApplicationController
     params.require(:link).permit(:title, :url, :description)
   end
 
-  def update_tags(tagstring)
-    return if tagstring.nil?
-    old_tags = @link.tags
-    new_tags = []
-    tagstring.split(', ').each do |t|
-      new_tags << tag(t)
-    end
-    @link.tags = []
-    @link.tags = new_tags
-    update_tag_link_counts(old_tags)
-    update_tag_link_counts(new_tags)
-  end
-
-  def update_tag_link_counts(tags)
-    tags.each do |t|
-      t.link_count = t.links.count
-      t.save
-    end
-  end
-
-  def tag(name)
-    tag = Tag.where('lower(name) = ?', name.downcase).find_by(user_id: current_user.id)
-    if tag.nil?
-      tag = Tag.create name: name, tag_type: 'default', user_id: current_user.id
-    end
-    tag
-  end
-
   def set_tag_s
     @tag_s = @link.tags.map(&:name).to_sentence(last_word_connector: ', ', two_words_connector: ', ')
   end
 
+  def set_tagstring
+    @link.tagstring = params[:link][:tags]
+  end
 end
