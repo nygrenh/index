@@ -44,8 +44,7 @@ class LinksController < ApplicationController
   # PATCH/PUT /links/1
   # PATCH/PUT /links/1.json
   def update
-    result = @link.update(link_params)
-    create_response(result, @link, 'updated', @link, 'edit')
+    update_and_respond(@link, link_params)
   end
 
   # DELETE /links/1
