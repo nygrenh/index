@@ -50,12 +50,7 @@ class LinksController < ApplicationController
   # DELETE /links/1
   # DELETE /links/1.json
   def destroy
-    domain = @link.domain
-    result = @link.destroy
-    if result
-      domain.link_count -= 1 if domain && !domain.destroyed?
-    end
-    create_response(result, @link, 'destroyed', links_url, links_url)
+    destroy_and_respond(@link)
   end
 
   private
