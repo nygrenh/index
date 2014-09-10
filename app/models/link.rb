@@ -36,11 +36,13 @@ class Link < ActiveRecord::Base
 
   def timestamp
     diff = Time.now.to_i - created_at.to_i
-    return created_at.strftime('%B %-d %Y') if diff >= 1.year
-    return created_at.strftime('%B %-d') if diff >= 1.day
-    return time_s(diff, 1.hour, 'hour') if diff >= 1.hour
-    return time_s(diff, 1.minute, 'minute') if diff >= 1.minute
-    'just now'
+    case
+    when diff >= 1.year then created_at.strftime('%B %-d %Y')
+    when diff >= 1.day then created_at.strftime('%B %-d')
+    when diff >= 1.hour then time_s(diff, 1.hour, 'hour')
+    when diff >= 1.minute then time_s(diff, 1.minute, 'minute')
+    else 'just now'
+    end
   end
 
   private
