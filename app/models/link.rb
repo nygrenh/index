@@ -74,7 +74,7 @@ class Link < ActiveRecord::Base
     old_tags = tags
     new_tags = []
     tagstring.split(', ').each do |t|
-      new_tags << tag(t)
+      new_tags << Tag.get(t, user_id)
     end
     self.tags = []
     self.tags = new_tags
@@ -87,14 +87,6 @@ class Link < ActiveRecord::Base
       t.link_count = t.links.count
       t.save
     end
-  end
-
-  def tag(name)
-    tag = Tag.where('lower(name) = ?', name.downcase).find_by(user_id: user_id)
-    if tag.nil?
-      tag = Tag.create name: name, tag_type: 'default', user_id: user_id
-    end
-    tag
   end
 
   def clean_tags
