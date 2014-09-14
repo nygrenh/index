@@ -16,4 +16,9 @@ class Tag < ActiveRecord::Base
     tag
   end
 
+  def update_link_count
+    self.link_count = links.count
+    save
+  end
+
 end
