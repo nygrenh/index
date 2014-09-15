@@ -62,8 +62,7 @@ class Link < ActiveRecord::Base
 
   def associate_with_domain
     domain_s = URI.parse(url).host.gsub(/^www\./, '')
-    domain = Domain.find_by domain: domain_s, user_id: user_id
-    domain = Domain.create domain: domain_s, user_id: user_id if domain.nil?
+    domain = Domain.get(domain_s, user_id)
     self.domain = domain
     domain.link_count += 1
     domain.save
