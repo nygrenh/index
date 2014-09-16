@@ -28,6 +28,7 @@ class Link < ActiveRecord::Base
   validates_presence_of :url
   validates :url, format: /\Ahttp.*\..*\z/
 
+  before_validation :complete_url
   before_save :check_title
   before_save :associate_with_domain
   before_save :update_tags
@@ -89,5 +90,9 @@ class Link < ActiveRecord::Base
 
   def clean_tags
     update_tag_link_counts(tags)
+  end
+
+  def complete_url
+    self.url = 'http://' + url unless url.nil? || url.starts_with?('http://', 'https://')
   end
 end

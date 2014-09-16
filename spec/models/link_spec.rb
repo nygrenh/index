@@ -18,6 +18,23 @@ describe Link do
     it { expect(link).not_to be_valid }
   end
 
+  context 'with a valid url' do
+    let(:url)  { 'https://www.valid.com/' }
+    let(:link)  { FactoryGirl.create(:link, url: url) }
+    it 'should have correct url' do
+      expect(link.url).to eq(url)
+    end
+  end
+
+  context 'without protocol' do
+    let(:url)  { 'example.com' }
+    let(:link)  { FactoryGirl.create(:link, url: url) }
+    let(:protocol) { 'http://' }
+    it 'should get protocol added' do
+      expect(link.url).to eq(protocol + url)
+    end
+  end
+
   context 'when created without title' do
     let(:link)  { FactoryGirl.create(:link, title: nil) }
     it 'title should be the url' do
