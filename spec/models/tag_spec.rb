@@ -7,7 +7,7 @@ describe Tag do
   it { is_expected.to belong_to(:user) }
   it { is_expected.to validate_presence_of(:name) }
 
-  describe '.update_link_count' do
+  describe '#update_link_count' do
     let(:link) { FactoryGirl.create(:link) }
     it 'updates the link count' do
       tag.links << link
@@ -17,7 +17,7 @@ describe Tag do
     end
   end
 
-  describe '#get' do
+  describe '.get' do
     let(:user) { FactoryGirl.create(:user) }
     let(:tag) { FactoryGirl.create(:tag, user_id: user.id) }
     it 'it should find tags case insensitively' do
