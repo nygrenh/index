@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'byebug'
 
 describe Tag do
   subject(:tag) { FactoryGirl.create(:tag) }
@@ -6,6 +7,29 @@ describe Tag do
   it { is_expected.to have_many(:notes) }
   it { is_expected.to belong_to(:user) }
   it { is_expected.to validate_presence_of(:name) }
+
+  describe 'link_count' do
+    let(:link) { FactoryGirl.create(:link) }
+    let(:another_link) { FactoryGirl.create(:link) }
+    # We have to fetch  afresh object from database because models change data
+    let(:db_tag) { Tag.find_by id: tag.id }
+
+    before :each do
+      link.tagstring = tag.name
+      link.save
+      another_link.tagstring = tag.name
+      another_link.save
+    end
+
+    it 'should be calculated correctly' do
+      expect(db_tag.link_count).to eq(2)
+    end
+
+    it 'should update when link gets destroyed' do
+      link.destroy
+      expect(db_tag.link_count).to eq(1)
+    end
+  end
 
   describe '#update_link_count' do
     let(:link) { FactoryGirl.create(:link) }

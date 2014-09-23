@@ -3,6 +3,7 @@ class Link < ActiveRecord::Base
   include PgSearch
 
   attr_accessor :tagstring
+  attr_accessor :tagstring
 
   pg_search_scope :search,
                   against: [:title, :url, :description],
@@ -22,7 +23,7 @@ class Link < ActiveRecord::Base
                   ranked_by: ':tsearch + (0.5 * :dmetaphone)'
 
   has_many :link_tags
-  has_many :tags, through: :link_tags, dependent: :destroy
+  has_many :tags, through: :link_tags
   belongs_to :user
   belongs_to :domain
   validates_presence_of :url
@@ -33,7 +34,7 @@ class Link < ActiveRecord::Base
   before_save :associate_with_domain
   before_save :update_tags
   after_destroy :clean_domains
-  after_destroy :clean_tags
+  before_destroy :clean_tags
 
   def timestamp
     diff = Time.now.to_i - created_at.to_i
@@ -89,7 +90,11 @@ class Link < ActiveRecord::Base
   end
 
   def clean_tags
-    update_tag_link_counts(tags)
+    tags.each do |t|
+      tag = Tag.get(t.name, user_id)
+      tag.link_count -= 1
+      tag.save
+    end
   end
 
   def complete_url
