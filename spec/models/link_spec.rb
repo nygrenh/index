@@ -5,7 +5,7 @@ describe Link do
 
   it { is_expected.to be_valid }
   it { is_expected.to validate_presence_of(:url) }
-  it { is_expected.to have_many(:tags).dependent(:destroy) }
+  it { is_expected.to have_many(:tags) }
   it { is_expected.to belong_to(:user) }
   it { is_expected.to belong_to(:domain) }
 
