@@ -3,4 +3,6 @@
   = link_to 'Edit', edit_domain_path(@domain), class: 'btn btn-sm btn-default'
 %p
   = markdown @domain.description
+%p
+  Links: #{ @domain.link_count }
 = render 'shared/links', links: @domain.links
