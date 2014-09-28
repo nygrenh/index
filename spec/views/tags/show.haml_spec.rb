@@ -12,4 +12,10 @@ describe 'tags/show.haml' do
     expect(rendered).to match(tag.name)
     expect(rendered).to match(tag.description)
   end
+
+  it 'shows link count' do
+    tag.link_count = 56
+    render
+    expect(rendered).to match(/Links: 56/)
+  end
 end
