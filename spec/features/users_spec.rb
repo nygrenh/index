@@ -44,4 +44,15 @@ describe 'User' do
       end
     end
   end
+
+  context "who hasn't registered" do
+    it 'can register' do
+      visit new_user_path
+      fill_in('user_name', with: 'name')
+      fill_in('user_password', with: 'secret')
+      fill_in('user_password_confirmation', with: 'secret')
+      click_button('Create User')
+      expect(page).to have_content('User was successfully created.')
+    end
+  end
 end

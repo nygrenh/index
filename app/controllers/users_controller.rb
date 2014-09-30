@@ -28,6 +28,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     create_and_respond(@user)
+    session[:user_id] = @user.id
   end
 
   # PATCH/PUT /users/1
