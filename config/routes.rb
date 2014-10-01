@@ -1,5 +1,7 @@
 Index::Application.routes.draw do
 
+  get 'welcome/index'
+
   resources :users
 
   resources :notes
@@ -18,7 +20,7 @@ Index::Application.routes.draw do
 
   delete 'sign_out', to: 'sessions#destroy'
 
-  root 'links#index'
+  root 'welcome#index'
 
   get 'search', to: 'search#index'
 
