@@ -84,9 +84,7 @@ class Link < ActiveRecord::Base
   end
 
   def update_tag_link_counts(tags)
-    tags.each do |t|
-      t.update_link_count
-    end
+    tags.each(&:update_link_count)
   end
 
   def clean_tags
