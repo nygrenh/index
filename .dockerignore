@@ -1,2 +1,7 @@
+/.bundle
+/vendor/bundle
+/spec/tmp
+/log
+
 .git
-tmp
+/tmp
