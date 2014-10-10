@@ -6,10 +6,9 @@ class LinksController < ApplicationController
   # GET /links
   # GET /links.json
   def index
-    @links = Link
+    @links = current_user.links
              .includes(:tags, :domain, :user)
              .order(created_at: :desc)
-             .where(user_id: current_user.id)
              .page(params[:page])
              .load
   end
@@ -35,8 +34,7 @@ class LinksController < ApplicationController
   # POST /links
   # POST /links.json
   def create
-    @link = Link.new(link_params)
-    @link.user = current_user
+    @link = current_user.links.new link_params
     set_tagstring
     create_and_respond(@link)
   end
