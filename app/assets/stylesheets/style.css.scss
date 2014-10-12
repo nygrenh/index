@@ -33,3 +33,9 @@ h1 {
 a, input, button {
    outline: 0 !important;
 }
+
+textarea:focus, input:focus {
+    border-color: #999999 !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+}
