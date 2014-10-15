@@ -1,6 +1,7 @@
 class Link < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
   include PgSearch
+  include Timestamped
 
   attr_accessor :tagstring
   attr_accessor :tagstring
@@ -35,17 +36,6 @@ class Link < ActiveRecord::Base
   before_save :update_tags
   after_destroy :clean_domains
   before_destroy :clean_tags
-
-  def timestamp
-    diff = Time.now.to_i - created_at.to_i
-    case
-    when diff >= 1.year then created_at.strftime('%B %-d %Y')
-    when diff >= 1.day then created_at.strftime('%B %-d')
-    when diff >= 1.hour then time_s(diff, 1.hour, 'hour')
-    when diff >= 1.minute then time_s(diff, 1.minute, 'minute')
-    else 'just now'
-    end
-  end
 
   private
 
