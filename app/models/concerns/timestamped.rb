@@ -1,5 +1,6 @@
 module Timestamped
   extend ActiveSupport::Concern
+  include ActionView::Helpers::TextHelper
 
   def timestamp
     diff = Time.now.to_i - created_at.to_i
@@ -10,5 +11,11 @@ module Timestamped
     when diff >= 1.minute then time_s(diff, 1.minute, 'minute')
     else 'just now'
     end
+  end
+
+  private
+
+  def time_s(diff, divisor, word)
+    pluralize(diff / divisor, word) + ' ago'
   end
 end

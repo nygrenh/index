@@ -7,5 +7,7 @@
   .panel.panel-default
     .panel-heading
       = link_to note.name, note
+      %span.note-timestamp
+        = note.timestamp
     .panel-body= markdown(note.text)
 %br/

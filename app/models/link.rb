@@ -1,5 +1,4 @@
 class Link < ActiveRecord::Base
-  include ActionView::Helpers::TextHelper
   include PgSearch
   include Timestamped
 
@@ -38,10 +37,6 @@ class Link < ActiveRecord::Base
   before_destroy :clean_tags
 
   private
-
-  def time_s(diff, divisor, word)
-    pluralize(diff / divisor, word) + ' ago'
-  end
 
   def check_title
     self.title = url if title.blank?
