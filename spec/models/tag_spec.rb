@@ -48,4 +48,6 @@ describe Tag do
       expect(Tag.get(tag.name.upcase, user.id)).to eq tag
     end
   end
+
+  it_behaves_like 'a timestamped resource'
 end

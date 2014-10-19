@@ -18,4 +18,9 @@ describe 'tags/show.haml' do
     render
     expect(rendered).to match(/Links: 56/)
   end
+
+  it 'shows timestamp' do
+    render
+    expect(rendered).to match(/just now/)
+  end
 end

@@ -11,6 +11,7 @@
 %p
   = markdown @tag.description
 %p
+  Created:  #{ @tag.timestamp },
   Links: #{ @tag.link_count }
 = render 'shared/links', links: @links if @links
 = paginate @links if  @links

@@ -1,4 +1,5 @@
 class Tag < ActiveRecord::Base
+  include Timestamped
   has_many :link_tags
   has_many :links, through: :link_tags
   has_many :note_tags
