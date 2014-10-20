@@ -1,4 +1,5 @@
 class Domain < ActiveRecord::Base
+  include Timestamped
   has_many :links
   belongs_to :user
 

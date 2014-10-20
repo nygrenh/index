@@ -20,4 +20,9 @@ describe 'domains/show.haml' do
     expect(rendered).to match(/Links: 33/)
   end
 
+  it 'shows timestamp' do
+    render
+    expect(rendered).to match(/just now/)
+  end
+
 end

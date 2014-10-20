@@ -36,4 +36,6 @@ describe Domain do
       end
     end
   end
+
+  it_behaves_like 'a timestamped resource'
 end
