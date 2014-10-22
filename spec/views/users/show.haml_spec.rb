@@ -10,6 +10,7 @@ describe 'users/show.haml' do
     allow(@user).to receive(:tags).and_return(Array.new(5))
     allow(@user).to receive(:domains).and_return(Array.new(12))
     allow(@user).to receive(:notes).and_return(Array.new(33))
+    allow(@user).to receive(:created_at).and_return(Time.now)
   end
 
   it 'renders attributes in <p>' do
@@ -35,6 +36,11 @@ describe 'users/show.haml' do
   it 'shows note count' do
     render
     expect(rendered).to match(/Notes: 33/)
+  end
+
+  it 'shows timestamp' do
+    render
+    expect(rendered).to match(/just now/)
   end
 
 end

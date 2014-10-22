@@ -11,4 +11,6 @@ describe User do
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_uniqueness_of(:name).case_insensitive }
   it { is_expected.to have_secure_password }
+
+  it_behaves_like 'a timestamped resource'
 end

@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include Timestamped
+
   has_secure_password
   has_many :links, dependent: :destroy
   has_many :notes, dependent: :destroy
