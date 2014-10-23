@@ -47,9 +47,4 @@ class ApplicationController < ActionController::Base
   def response_notice(object, action)
     "#{object.class} was successfully #{action}."
   end
-
-  def check_for_permission(item)
-    return if item.user_id == current_user.id
-    redirect_to root_path, alert: "You don't have permission to do that."
-  end
 end

@@ -9,8 +9,7 @@ shared_examples 'a private resource' do
     end
 
     it 'is not possible' do
-      visit url_for(resource)
-      expect(page).to have_content("You don't have permission to do that.")
+      expect { visit url_for(resource) }.to raise_exception
     end
   end
 end

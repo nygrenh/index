@@ -28,8 +28,7 @@ class DomainsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_domain
-    @domain = Domain.find(params[:id])
-    check_for_permission(@domain)
+    @domain = current_user.domains.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
