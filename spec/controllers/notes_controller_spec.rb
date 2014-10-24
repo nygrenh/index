@@ -54,6 +54,11 @@ describe NotesController do
         post :create, { note: valid_attributes }, valid_session
         expect(response).to redirect_to(Note.last)
       end
+
+      it 'sets note owner' do
+        post :create, { note: valid_attributes }, valid_session
+        expect(assigns(:note).user_id).to eq(user.id)
+      end
     end
 
     describe 'with invalid params' do
