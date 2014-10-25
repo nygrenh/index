@@ -12,7 +12,7 @@ describe 'Searching' do
     let(:title) { 'title' }
     let(:description) { 'description' }
     let(:tag) { FactoryGirl.create(:tag, name: 'tag_name') }
-    let!(:link) { FactoryGirl.create(:link, title: title, description: description) }
+    let!(:link) { FactoryGirl.create(:link, title: title, description: description, user_id: user.id) }
 
     it 'works with title' do
       visit '/search?q=' + title
@@ -33,6 +33,15 @@ describe 'Searching' do
     it 'works with words that sound alike' do
       visit '/search?q=' + 'tattle'
       expect(page).to have_content(title)
+    end
+
+    describe 'that are not own' do
+      let(:another_user) { FactoryGirl.create(:user, name: 'Smith') }
+      let(:link) { FactoryGirl.create(:link, title: 'Unsearchable link', user_id: another_user.id)}
+      it 'cannot be searched' do
+        visit '/search?q=' + 'link'
+        expect(page).not_to have_content(link.title)
+      end
     end
   end
 end
