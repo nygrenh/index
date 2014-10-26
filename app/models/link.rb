@@ -32,7 +32,7 @@ class Link < ActiveRecord::Base
   before_validation :complete_url
   before_save :check_title
   before_save :associate_with_domain
-  before_save :update_tags
+  after_save :update_tags
   after_destroy :clean_domains
   before_destroy :clean_tags
 
