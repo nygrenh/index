@@ -57,19 +57,28 @@ class Link < ActiveRecord::Base
 
   def update_tags
     return if tagstring.nil?
-    old_tags = tags
+    old_tags = Array.new(tags)
     new_tags = []
     tagstring.split(', ').each do |t|
       new_tags << Tag.get(t, user_id)
     end
     self.tags = []
     self.tags = new_tags
-    update_tag_link_counts(old_tags)
-    update_tag_link_counts(new_tags)
+    update_tag_link_counts(old_tags, new_tags)
   end
 
-  def update_tag_link_counts(tags)
-    tags.each(&:update_link_count)
+  def update_tag_link_counts(old_tags, new_tags)
+    dec = old_tags - new_tags
+    dec.each do |t|
+      t.link_count -= 1
+      t.save
+      t.destroy if t.link_count == 0
+    end
+    add = new_tags - old_tags
+    add.each do |t|
+      t.link_count += 1
+      t.save
+    end
   end
 
   def clean_tags
