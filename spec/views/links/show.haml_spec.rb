@@ -5,28 +5,25 @@ describe 'links/show.haml' do
 
   before(:each) do
     FactoryGirl.build(:domain, domain: 'test.com')
-    @link = assign(:link, stub_model(Link,
-      title: 'Title',
-      url: 'Url',
-      description: 'MyText',
-      source: 'Source',
-      user_id: 1,
-      domain_id: '1'
-    ))
+    @link = FactoryGirl.create(:link, title: 'Title', description: 'Cool stuff')
     tags = [tag]
     allow(@link).to receive(:tags) { tags }
   end
 
   it 'renders attributes in <p>' do
     render
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    expect(rendered).to match(/Title/)
-    expect(rendered).to match(/Url/)
-    expect(rendered).to match(/MyText/)
+    expect(rendered).to match(@link.title)
+    expect(rendered).to match(@link.url)
+    expect(rendered).to match(@link.description)
   end
 
   it 'renders tags' do
     render
     expect(rendered).to match(tag.name)
+  end
+
+  it 'shows a timestamp' do
+    render
+    expect(rendered).to match(/just now/)
   end
 end
