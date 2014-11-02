@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     name = params[:name]
     user = User.find_by('lower(name) = ?', name.downcase)
     if user.nil? || !user.authenticate(params[:password])
-      redirect_to :back, notice: 'Username and password do not match.'
+      redirect_to :back, alert: 'Username and password do not match.'
     else
       session[:user_id] = user.id
       redirect_to session[:return_to] || links_path, notice: "You've logged in."
