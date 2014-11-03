@@ -1,12 +1,1 @@
-%h1 Log in
-= form_tag sessions_path do
-  .field
-    %label Name
-    = text_field_tag :name, params[:name], class: "form-control", placeholder: "Name"
-  .field
-    %label Password
-    = password_field_tag :password, params[:password], class: "form-control", placeholder: "Password"
-  .actions
-    = button_tag "Log in", class: 'btn btn-default', data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Logging in..."}
-  #register
-    = link_to 'Create an account', new_user_path
+= render 'sessions/new'
