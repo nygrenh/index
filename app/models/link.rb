@@ -43,8 +43,12 @@ class Link < ActiveRecord::Base
   end
 
   def clean_domains
-    domain.destroy if domain.links.count.zero?
-    domain.link_count -= 1 unless domain.destroyed?
+    if domain.links.count.zero?
+      domain.destroy
+    else
+      domain.link_count -= 1
+      domain.save
+    end
   end
 
   def associate_with_domain
