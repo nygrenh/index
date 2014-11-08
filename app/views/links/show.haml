@@ -14,3 +14,5 @@
 %label View this link on:
 %p
   = link_to 'Wayback machine', "https://web.archive.org/web/*/#{@link.url}"
+%p
+  = link_to 'Google cache', "https://webcache.googleusercontent.com/search?q=cache:#{@link.url}"
