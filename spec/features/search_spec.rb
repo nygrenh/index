@@ -35,6 +35,31 @@ describe 'Searching' do
       expect(page).to have_content(title)
     end
 
+    it 'shows result count' do
+      visit '/search?q=' + title
+      expect(page).to have_content('1 result')
+    end
+
+    context 'with multiple results' do
+      before :each do
+        4.times do
+          FactoryGirl.create(:link, title: title, description: description, user_id: user.id)
+        end
+      end
+
+      it 'shows a message' do
+        visit '/search?q=' + title
+        expect(page).to have_content('5 results')
+      end
+    end
+
+    context 'with no results' do
+      it 'shows a message' do
+        visit '/search?q=' + 'asjdhasjkdhkj'
+        expect(page).to have_content('No results')
+      end
+    end
+
     describe 'that are not own' do
       let(:another_user) { FactoryGirl.create(:user, name: 'Smith') }
       let(:link) { FactoryGirl.create(:link, title: 'Unsearchable link', user_id: another_user.id)}

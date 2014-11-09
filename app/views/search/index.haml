@@ -1,3 +1,9 @@
 %h1 Search results
+
+.search-result-metadata
+  - if @results.empty?
+    No results :(
+  - else
+    = pluralize(@results.size, 'result')
 - @results.each do |result|
   = render 'shared/link', link: result
