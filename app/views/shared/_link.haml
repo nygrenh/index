@@ -5,8 +5,8 @@
       (#{link_to link.domain.domain, link.domain if link.domain})
   .description= link.description
   = render 'shared/tags', tags: link.tags
-  %div
-    %span.timestamp= link.timestamp
-    %span= link_to 'Show', link
-    %span= link_to 'Edit', edit_link_path(link)
-    %span= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' }
+  %span.timestamp= link.timestamp
+  .btn-group
+    = link_to 'Show', link, class:'btn btn-default btn-xs'
+    = link_to 'Edit', edit_link_path(link), class:'btn btn-default btn-xs'
+    = link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-default btn-xs'
