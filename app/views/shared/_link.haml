@@ -4,9 +4,9 @@
     %span.domain
       (#{link_to link.domain.domain, link.domain if link.domain})
   .description= link.description
-  = render 'shared/tags', tags: link.tags
   %span.timestamp= link.timestamp
-  .btn-group
-    = link_to 'Show', link, class:'btn btn-default btn-xs'
-    = link_to 'Edit', edit_link_path(link), class:'btn btn-default btn-xs'
-    = link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-default btn-xs'
+  = render 'shared/tags', tags: link.tags
+  .btn-group.link-actions
+    = link_to 'Show', link, class:'btn btn-default btn-xs btn-action'
+    = link_to 'Edit', edit_link_path(link), class:'btn btn-default btn-xs btn-action'
+    = link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-default btn-xs btn-action'
