@@ -2,6 +2,6 @@
 /vendor/bundle
 /spec/tmp
 /log
-
+/bin
 .git
 /tmp
