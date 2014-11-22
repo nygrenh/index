@@ -1,12 +1,10 @@
 require 'rails_helper'
+require 'byebug'
 
 describe 'users/show.haml' do
   before(:each) do
-    @user = assign(:user, stub_model(User,
-      name: 'Name',
-      password_digest: 'Password Digest'
-    ))
-    allow(@user).to receive(:links).and_return(Array.new(2))
+    @user = FactoryGirl.create(:user)
+    @user.links << FactoryGirl.create(:link)
     allow(@user).to receive(:tags).and_return(Array.new(5))
     allow(@user).to receive(:domains).and_return(Array.new(12))
     allow(@user).to receive(:notes).and_return(Array.new(33))
@@ -15,12 +13,12 @@ describe 'users/show.haml' do
 
   it 'renders attributes in <p>' do
     render
-    expect(rendered).to match(/Name/)
+    expect(rendered).to have_content(@user.name)
   end
 
   it 'shows link count' do
     render
-    expect(rendered).to match(/Links: 2/)
+    expect(rendered).to match(/Links: 1/)
   end
 
   it 'shows tag count' do

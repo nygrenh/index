@@ -48,6 +48,10 @@ gem 'puma', '~> 2.9.2'
 # Search
 gem 'pg_search', '~> 0.7.8'
 
+# Charts
+gem 'chartkick', '~> 1.3.2'
+gem 'groupdate', '~> 2.3.0'
+
 group :production do
   gem 'pg', '~> 0.17.1'
   gem 'rails_12factor', '~> 0.0.3'
