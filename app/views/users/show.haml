@@ -7,7 +7,7 @@
 
 .charts
   %h2 Created links
-  = line_chart @user.links.group_by_day(:created_at).count
+  = line_chart @user.links.group_by_month(:created_at).count
 %p
   = link_to 'Edit', edit_user_path(@user), class: 'btn btn-sm btn-default'
   = link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-default'
