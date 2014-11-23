@@ -12,6 +12,12 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @barchart = {
+      'Links' => @user.links.count,
+      'Tags' => @user.tags.count,
+      'Domains' => @user.domains.count,
+      'Notes' => @user.notes.count
+    }
   end
 
   # GET /users/new
