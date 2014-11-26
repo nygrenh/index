@@ -16,3 +16,5 @@
   = link_to 'Wayback machine', "https://web.archive.org/web/*/#{@link.url}"
 %p
   = link_to 'Google cache', "https://webcache.googleusercontent.com/search?q=cache:#{@link.url}"
+%p
+  = link_to 'Hacker News search', "https://hn.algolia.com/#!/all/forever/prefix/0/#{@link.url}"
