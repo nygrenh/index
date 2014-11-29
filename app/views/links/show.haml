@@ -13,8 +13,15 @@
   = link_to 'Edit', edit_link_path(@link), class: 'btn btn-sm btn-default'
 %label View this link on:
 %p
-  = link_to 'Wayback machine', "https://web.archive.org/web/*/#{@link.url}"
+
+  = link_to  "https://web.archive.org/web/*/#{@link.url}" do
+    %i.fa.fa-institution
+    Wayback machine
 %p
-  = link_to 'Google cache', "https://webcache.googleusercontent.com/search?q=cache:#{@link.url}"
+  = link_to "https://webcache.googleusercontent.com/search?q=cache:#{@link.url}" do
+    %i.fa.fa-google
+    Google cache
 %p
-  = link_to 'Hacker News search', "https://hn.algolia.com/#!/all/forever/prefix/0/#{@link.url}"
+  = link_to "https://hn.algolia.com/#!/all/forever/prefix/0/#{@link.url}" do
+    %i.fa.fa-hacker-news
+    Hacker News search
