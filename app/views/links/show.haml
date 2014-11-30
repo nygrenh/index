@@ -24,4 +24,8 @@
 %p
   = link_to "https://hn.algolia.com/#!/all/forever/prefix/0/#{@link.url}" do
     %i.fa.fa-hacker-news
-    Hacker News search
+    Hacker News
+%p
+  = link_to "https://www.reddit.com/search?q=url:#{@link.url}" do
+    %i.fa.fa-reddit
+    Reddit
