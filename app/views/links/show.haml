@@ -16,11 +16,11 @@
 
   = link_to  "https://web.archive.org/web/*/#{@link.url}" do
     %i.fa.fa-institution
-    Wayback machine
+    Wayback Machine
 %p
   = link_to "https://webcache.googleusercontent.com/search?q=cache:#{@link.url}" do
     %i.fa.fa-google
-    Google cache
+    Google Cache
 %p
   = link_to "https://hn.algolia.com/#!/all/forever/prefix/0/#{@link.url}" do
     %i.fa.fa-hacker-news
@@ -29,3 +29,7 @@
   = link_to "https://www.reddit.com/search?q=url:#{@link.url}" do
     %i.fa.fa-reddit
     Reddit
+%p
+  = link_to "https://twitter.com/search?q=#{@link.url}" do
+    %i.fa.fa-twitter
+    Twitter
