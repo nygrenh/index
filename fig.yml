@@ -1,6 +1,6 @@
 web:
   build: .
-  command: rails s
+  command: rails s --binding 0.0.0.0
   volumes:
     - .:/usr/src/app
   ports:
