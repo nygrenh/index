@@ -22,4 +22,9 @@ class Tag < ActiveRecord::Base
     save
   end
 
+  def self.allowed_color?(color)
+    allowed_colors = %w(default primary success info warning danger).to_set
+    allowed_colors.include?(color)
+  end
+
 end

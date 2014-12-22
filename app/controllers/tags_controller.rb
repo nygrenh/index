@@ -32,7 +32,7 @@ class TagsController < ApplicationController
 
   # PATCH /tags/1/change_color
   def change_color
-    if allowed_color
+    if Tag.allowed_color?(params[:color])
       update_and_respond(@tag, tag_type: params[:color])
     else
       redirect_to @tag
@@ -49,10 +49,5 @@ class TagsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def tag_params
     params.require(:tag).permit(:name, :description)
-  end
-
-  def allowed_color
-    allowed_colors = %w(default primary success info warning danger).to_set
-    allowed_colors.include?(params[:color])
   end
 end
