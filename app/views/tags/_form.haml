@@ -15,5 +15,9 @@
     = f.label :description
     %br/
     = f.text_area :description, class: "form-control", placeholder: "Description", rows: 10
+    .field
+      = f.label :color
+      %br/
+      = f.select :tag_type, options_for_select(Tag.colors, @tag.tag_type)
   .actions
     = f.button class: 'btn btn-default', data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Updating..."}

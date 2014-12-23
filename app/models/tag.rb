@@ -9,6 +9,8 @@ class Tag < ActiveRecord::Base
 
   validates_presence_of :name
 
+  COLORS = [:default, :primary, :success, :info, :warning, :danger]
+
   def self.get(name, user_id)
     tag = Tag.where('lower(name) = ?', name.downcase).find_by(user_id: user_id)
     if tag.nil?
@@ -17,14 +19,17 @@ class Tag < ActiveRecord::Base
     tag
   end
 
+  def self.colors
+    %w(default primary success info warning danger).to_set
+  end
+
   def update_link_count
     self.link_count = links.count
     save
   end
 
   def self.allowed_color?(color)
-    allowed_colors = %w(default primary success info warning danger).to_set
-    allowed_colors.include?(color)
+    colors.include?(color)
   end
 
 end
