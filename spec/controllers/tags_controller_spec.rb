@@ -46,6 +46,13 @@ describe TagsController do
       end
     end
 
+    context 'with a valid color' do
+      it 'updates the tag' do
+        expect_any_instance_of(Tag).to receive(:update).with('tag_type' => 'warning')
+        put :update, { id: tag.to_param, tag: { 'tag_type' => 'warning' } }, valid_session
+      end
+    end
+
     describe 'with invalid params' do
       it 'assigns the tag as @tag' do
         # Trigger the behavior that occurs when invalid params are submitted
@@ -59,29 +66,6 @@ describe TagsController do
         allow_any_instance_of(Tag).to receive(:save).and_return(false)
         put :update, { id: tag.to_param, tag: { 'name' => 'invalid value' } }, valid_session
         expect(response).to render_template('edit')
-      end
-    end
-  end
-
-  describe 'PATCH change color' do
-    let(:color) { 'info' }
-
-    it 'redirects to the tag' do
-      patch :change_color, { id: tag.to_param, tag: tag, color: color }, valid_session
-      expect(response).to redirect_to(tag)
-    end
-
-    it 'updates the color' do
-      expect_any_instance_of(Tag).to receive(:update).with(tag_type: color)
-      patch :change_color, { id: tag.to_param, tag: tag, color: color }, valid_session
-    end
-
-    context 'with an invalid color' do
-      let(:color) { 'invalid' }
-
-      it "doesn't update the color" do
-        expect_any_instance_of(Tag).not_to receive(:update)
-        patch :change_color, { id: tag.to_param, tag: tag, color: color }, valid_session
       end
     end
   end

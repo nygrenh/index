@@ -30,15 +30,6 @@ class TagsController < ApplicationController
     update_and_respond(@tag, tag_params)
   end
 
-  # PATCH /tags/1/change_color
-  def change_color
-    if Tag.allowed_color?(params[:color])
-      update_and_respond(@tag, tag_type: params[:color])
-    else
-      redirect_to @tag
-    end
-  end
-
   private
 
   # Use callbacks to share common setup or constraints between actions.

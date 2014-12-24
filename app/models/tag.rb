@@ -9,8 +9,6 @@ class Tag < ActiveRecord::Base
 
   validates_presence_of :name
 
-  COLORS = [:default, :primary, :success, :info, :warning, :danger]
-
   def self.get(name, user_id)
     tag = Tag.where('lower(name) = ?', name.downcase).find_by(user_id: user_id)
     if tag.nil?

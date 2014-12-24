@@ -1,13 +1,6 @@
 %h1
   = @tag.name
   = link_to 'Edit', edit_tag_path(@tag), class: 'btn btn-sm btn-default'
-#color.btn-group.btn-group-justified
-  = link_to 'Grey', change_color_tag_path(@tag, color: :default), method: :patch, class: 'btn btn-sm btn-default'
-  = link_to 'Blue', change_color_tag_path(@tag, color: :primary), method: :patch, class: 'btn btn-sm btn-primary'
-  = link_to 'Green', change_color_tag_path(@tag, color: :success), method: :patch, class: 'btn btn-sm btn-success'
-  = link_to 'Light blue', change_color_tag_path(@tag, color: :info), method: :patch, class: 'btn btn-sm btn-info'
-  = link_to 'Yellow', change_color_tag_path(@tag, color: :warning), method: :patch, class: 'btn btn-sm btn-warning'
-  = link_to 'Red', change_color_tag_path(@tag, color: :danger), method: :patch, class: 'btn btn-sm btn-danger'
 %p
   = markdown @tag.description
 %p

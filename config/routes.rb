@@ -8,11 +8,7 @@ Index::Application.routes.draw do
 
   resources :domains, except: [:destroy, :new, :create]
 
-  resources :tags, except: [:destroy, :new, :create] do
-    member do
-      patch :change_color
-    end
-  end
+  resources :tags, except: [:destroy, :new, :create]
 
   resources :links
 
