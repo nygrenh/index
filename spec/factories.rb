@@ -11,6 +11,7 @@ FactoryGirl.define do
 
   factory :tag do
     name 'interesting'
+    tag_type 'default'
   end
 
   factory :domain do

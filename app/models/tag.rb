@@ -1,5 +1,7 @@
 class Tag < ActiveRecord::Base
   include Timestamped
+  COLORS = %w(default primary success info warning danger)
+
   has_many :link_tags
   has_many :links, through: :link_tags
   has_many :note_tags
@@ -8,6 +10,7 @@ class Tag < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :name
+  validates :tag_type, inclusion: { in: COLORS, message: '%{value} is not a valid color' }
 
   def self.get(name, user_id)
     tag = Tag.where('lower(name) = ?', name.downcase).find_by(user_id: user_id)
@@ -18,7 +21,7 @@ class Tag < ActiveRecord::Base
   end
 
   def self.colors
-    %w(default primary success info warning danger).to_set
+    COLORS.to_set
   end
 
   def update_link_count
