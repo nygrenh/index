@@ -69,3 +69,27 @@ section {
     }
   }
 }
+
+.label-yellow {
+  @include label-variant(#c4f403);
+}
+
+.label-blue {
+  @include label-variant(#124bc4);
+}
+
+.label-green {
+  @include label-variant(#1c9d16);
+}
+
+.label-light-blue {
+  @include label-variant(#25b6ef);
+}
+
+.label-yellow {
+  @include label-variant(#c5da23);
+}
+
+.label-red {
+  @include label-variant(#e61717);
+}

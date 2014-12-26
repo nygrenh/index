@@ -1,6 +1,6 @@
 class Tag < ActiveRecord::Base
   include Timestamped
-  COLORS = %w(default primary success info warning danger)
+  COLORS = %w(default blue green light-blue yellow red)
 
   has_many :link_tags
   has_many :links, through: :link_tags
