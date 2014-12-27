@@ -18,6 +18,8 @@
     .field
       = f.label :color
       %br/
-      = f.select :tag_type, options_for_select(Tag.colors, @tag.tag_type)
+      = f.select('tag_type', nil, {}, class: 'selectpicker') do |t|
+        - @colors.each do |c|
+          %option{value: c, 'data-content' => "<span class='label label-#{c}'> </span> #{ c.humanize}"}
   .actions
     = f.button class: 'btn btn-default', data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Updating..."}

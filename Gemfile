@@ -29,6 +29,8 @@ gem 'dotenv-rails', '~> 1.0.2'
 
 # CSS framework
 gem 'bootstrap-sass', '~> 3.3.1'
+# Select extension
+gem 'bootstrap-select-rails', '~> 1.6.3'
 
 # Icons
 gem 'font-awesome-rails', '~> 4.2.0'
