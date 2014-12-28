@@ -70,6 +70,19 @@ section {
   }
 }
 
+.tag-color-box {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+}
+
+.tag-dropdown-text {
+  margin-left: 2px;
+  display: inline;
+  vertical-align: middle;
+}
+
 .label-yellow {
   @include label-variant(#c4f403);
 }

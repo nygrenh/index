@@ -20,6 +20,6 @@
       %br/
       = f.select('tag_type', nil, {}, class: 'selectpicker') do |t|
         - @colors.each do |c|
-          %option{value: c, 'data-content' => "<span class='label label-#{c}'> </span> #{ c.humanize}"}
+          %option{value: c, 'data-content' => "<span class='tag-color-box label-#{c}'></span> <span class='tag-dropdown-text'>#{ c.humanize}</span>"}
   .actions
     = f.button class: 'btn btn-default', data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Updating..."}
