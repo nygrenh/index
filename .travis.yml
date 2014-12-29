@@ -1,19 +1,16 @@
 language: ruby
 cache: bundler
 sudo: false
-rvm:
-- 2.0.0
+env: RAILS_ENV=test
+rvm: 2.1.5
 before_script:
   - psql -c 'create database index_test;' -U postgres
 script:
-- bundle exec rake db:migrate --trace
-- RAILS_ENV=test bundle exec rake db:migrate --trace
-- bundle exec rspec -fd spec/
+  - bundle exec rake db:migrate
+  - bundle exec rspec -fd --color
 deploy:
   provider: heroku
   api_key:
     secure: DMU5iIH2QnyHYfxtmsp+fKazZnTEo33sPgYzfaQoprS0y9jAFncqUFqDmcoqee5TY9+OjucSi0joF/sU+XK+peHSEyqYnP4GdhRqFKgylVmNhvvVeAnReTdxgJ3fsTXXmTh80gpPmum31tQ/arFTWJvSGpWaZMLkZaK/djSEyzY=
   app: theindex
-  on:
-    repo: nygrenh/index
-  run: "rake db:migrate"
+  run: 'rake db:migrate'
