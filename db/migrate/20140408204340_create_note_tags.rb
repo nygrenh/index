@@ -4,7 +4,7 @@ class CreateNoteTags < ActiveRecord::Migration
       t.integer :note_id
       t.integer :tag_id
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

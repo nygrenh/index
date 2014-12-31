@@ -8,7 +8,7 @@ class CreateLinks < ActiveRecord::Migration
       t.integer :user_id
       t.string :domain_id
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

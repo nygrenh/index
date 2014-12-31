@@ -4,7 +4,7 @@ class CreateDomains < ActiveRecord::Migration
       t.string :domain
       t.text :description
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

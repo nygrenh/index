@@ -5,7 +5,7 @@ class CreateNotes < ActiveRecord::Migration
       t.text :text
       t.integer :user_id
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

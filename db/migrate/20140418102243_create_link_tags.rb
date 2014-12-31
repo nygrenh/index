@@ -4,7 +4,7 @@ class CreateLinkTags < ActiveRecord::Migration
       t.integer :link_id
       t.integer :tag_id
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

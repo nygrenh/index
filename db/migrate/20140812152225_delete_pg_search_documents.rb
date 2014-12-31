@@ -10,7 +10,7 @@ class DeletePgSearchDocuments < ActiveRecord::Migration
       create_table :pg_search_documents do |t|
         t.text :content
         t.belongs_to :searchable, polymorphic: true
-        t.timestamps
+        t.timestamps null: false
       end
     end
   end
