@@ -12,29 +12,29 @@
 %p
   = link_to 'Edit', edit_link_path(@link), class: 'btn btn-sm btn-default'
 %label View this link on:
-%p
+%ul.view-on
+  %li
+    = link_to  "https://web.archive.org/web/*/#{@link.url}" do
+      %i.fa.fa-institution
+      Wayback Machine
+  %li
+    = link_to "https://webcache.googleusercontent.com/search?q=cache:#{@link.url}" do
+      %i.fa.fa-google
+      Google Cache
+  %li
+    = link_to "https://hn.algolia.com/#!/all/forever/prefix/0/#{@link.url}" do
+      %i.fa.fa-hacker-news
+      Hacker News
+  %li
+    = link_to "https://www.reddit.com/search?q=url:#{@link.url}" do
+      %i.fa.fa-reddit
+      Reddit
+  %li
+    = link_to "https://twitter.com/search?q=#{@link.url}" do
+      %i.fa.fa-twitter
+      Twitter
 
-  = link_to  "https://web.archive.org/web/*/#{@link.url}" do
-    %i.fa.fa-institution
-    Wayback Machine
-%p
-  = link_to "https://webcache.googleusercontent.com/search?q=cache:#{@link.url}" do
-    %i.fa.fa-google
-    Google Cache
-%p
-  = link_to "https://hn.algolia.com/#!/all/forever/prefix/0/#{@link.url}" do
-    %i.fa.fa-hacker-news
-    Hacker News
-%p
-  = link_to "https://www.reddit.com/search?q=url:#{@link.url}" do
-    %i.fa.fa-reddit
-    Reddit
-%p
-  = link_to "https://twitter.com/search?q=#{@link.url}" do
-    %i.fa.fa-twitter
-    Twitter
-
-%p
-  = link_to "https://plus.google.com/u/0/s/#{u @link.url}" do
-    %i.fa.fa-google-plus
-    Google Plus
+  %li
+    = link_to "https://plus.google.com/u/0/s/#{u @link.url}" do
+      %i.fa.fa-google-plus
+      Google Plus
