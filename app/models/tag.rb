@@ -14,9 +14,7 @@ class Tag < ActiveRecord::Base
 
   def self.get(name, user_id)
     tag = Tag.where('lower(name) = ?', name.downcase).find_by(user_id: user_id)
-    if tag.nil?
-      tag = Tag.create name: name, tag_type: 'default', user_id: user_id
-    end
+    tag ||= Tag.create name: name, tag_type: 'default', user_id: user_id
     tag
   end
 

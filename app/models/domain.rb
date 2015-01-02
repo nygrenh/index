@@ -7,7 +7,7 @@ class Domain < ActiveRecord::Base
 
   def self.get(name, user_id)
     domain = Domain.where('lower(domain) = ?', name.downcase).find_by(user_id: user_id)
-    domain = Domain.create domain: name, user_id: user_id if domain.nil?
+    domain ||= Domain.create domain: name, user_id: user_id
     domain
   end
 end

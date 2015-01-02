@@ -3,7 +3,6 @@ class Link < ActiveRecord::Base
   include Timestamped
 
   attr_accessor :tagstring
-  attr_accessor :tagstring
 
   pg_search_scope :search,
                   against: [:title, :url, :description],
@@ -60,13 +59,12 @@ class Link < ActiveRecord::Base
   end
 
   def update_tags
-    return if tagstring.nil?
+    return unless tagstring
     old_tags = Array.new(tags)
     new_tags = []
     tagstring.split(', ').each do |t|
       new_tags << Tag.get(t, user_id)
     end
-    self.tags = []
     self.tags = new_tags
     update_tag_link_counts(old_tags, new_tags)
   end
