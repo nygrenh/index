@@ -1,6 +1,6 @@
 class Tag < ActiveRecord::Base
   include Timestamped
-  COLORS = %w(default blue green light_blue yellow red)
+  COLORS = %w(default blue light_blue cyan green light_green yellow red pink orange purple brown)
 
   has_many :link_tags
   has_many :links, through: :link_tags

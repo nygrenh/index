@@ -85,25 +85,45 @@ section {
 }
 
 .label-yellow {
-  @include label-variant(#c4f403);
+  @include label-variant(#f8ec06);
 }
 
 .label-blue {
   @include label-variant(#124bc4);
 }
 
+.label-cyan {
+  @include label-variant(#3ed2de);
+}
+
 .label-green {
   @include label-variant(#1c9d16);
+}
+
+.label-light_green {
+  @include label-variant(#69d85c);
 }
 
 .label-light_blue {
   @include label-variant(#25b6ef);
 }
 
-.label-yellow {
-  @include label-variant(#c5da23);
-}
-
 .label-red {
   @include label-variant(#e61717);
+}
+
+.label-pink {
+  @include label-variant(#ec7f96);
+}
+
+.label-orange {
+  @include label-variant(#fa9829);
+}
+
+.label-purple {
+  @include label-variant(#912696);
+}
+
+.label-brown {
+  @include label-variant(#7e544a);
 }
