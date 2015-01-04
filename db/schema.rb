@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 20140812152828) do
   create_table "domains", force: :cascade do |t|
     t.string   "domain"
     t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "user_id"
     t.integer  "link_count",  default: 0
   end
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 20140812152828) do
   create_table "link_tags", force: :cascade do |t|
     t.integer  "link_id"
     t.integer  "tag_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "links", force: :cascade do |t|
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 20140812152828) do
     t.text     "description"
     t.string   "source"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "domain_id"
   end
 
@@ -53,23 +53,23 @@ ActiveRecord::Schema.define(version: 20140812152828) do
   create_table "note_tags", force: :cascade do |t|
     t.integer  "note_id"
     t.integer  "tag_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "notes", force: :cascade do |t|
     t.string   "name"
     t.text     "text"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tags", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.string   "tag_type"
     t.integer  "user_id"
     t.integer  "link_count",  default: 0
@@ -78,8 +78,8 @@ ActiveRecord::Schema.define(version: 20140812152828) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "password_digest"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end

@@ -31,6 +31,8 @@ gem 'dotenv-rails', '~> 1.0.2'
 gem 'bootstrap-sass', '~> 3.3.1'
 # Select extension
 gem 'bootstrap-select-rails', '~> 1.6.3'
+# Pretty dialogs
+gem 'bootbox-rails', '~> 0.4.0'
 
 # Icons
 gem 'font-awesome-rails', '~> 4.2.0'
