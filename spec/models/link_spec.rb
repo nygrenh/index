@@ -55,6 +55,13 @@ describe Link do
       it 'should have tags' do
         expect(link.tags.count).to eq(3)
       end
+
+      context 'with a poorly formatted tagstring' do
+        let(:tags) { "tag 1, \n  tag 2 \n , tag 3" }
+        it 'it should be formatted properly' do
+          expect(link.tags.second.name).to eq('tag 2')
+        end
+      end
     end
   end
 

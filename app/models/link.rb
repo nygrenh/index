@@ -59,11 +59,11 @@ class Link < ActiveRecord::Base
   end
 
   def update_tags
-    return unless tagstring
+    return unless @tagstring
     old_tags = Array.new(tags)
     new_tags = []
-    tagstring.split(', ').each do |t|
-      new_tags << Tag.get(t, user_id)
+    @tagstring.squish.split(', ').each do |t|
+      new_tags << Tag.get(t.strip, user_id)
     end
     self.tags = new_tags
     update_tag_link_counts(old_tags, new_tags)
