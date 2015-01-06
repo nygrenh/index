@@ -21,6 +21,14 @@ describe Tag do
     end
   end
 
+  describe 'destroying all the links' do
+    it 'destroys the tag' do
+      Link.last.destroy
+      visit '/tags'
+      expect(page).not_to have_content('Test tag')
+    end
+  end
+
   describe 'untagging' do
     it 'decreases link count' do
       visit new_link_path

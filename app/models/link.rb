@@ -88,6 +88,7 @@ class Link < ActiveRecord::Base
       tag = Tag.get(t.name, user_id)
       tag.link_count -= 1
       tag.save
+      tag.destroy if tag.link_count == 0
     end
   end
 
