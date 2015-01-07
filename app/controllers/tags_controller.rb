@@ -22,7 +22,7 @@ class TagsController < ApplicationController
 
   # GET /tags/1/edit
   def edit
-    @colors = Tag.colors
+    @colors = Color.colors
   end
 
   # PATCH/PUT /tags/1

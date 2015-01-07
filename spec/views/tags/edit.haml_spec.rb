@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'tags/edit' do
   before(:each) do
     @tag = assign(:tag, FactoryGirl.create(:tag))
-    @colors = Tag.colors
+    @colors = Color.colors
   end
 
   it 'renders the edit tag form' do

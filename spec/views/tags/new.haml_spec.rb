@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'tags/new' do
   before(:each) do
     assign(:tag, FactoryGirl.build(:tag))
-    @colors = Tag.colors
+    @colors = Color.colors
   end
 
   it 'renders new tag form' do
