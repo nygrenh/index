@@ -1,5 +1,5 @@
 class Color
-  COLORS = %w(default blue light_blue cyan green light_green yellow red pink orange purple brown)
+  COLORS = %w(blue light_blue cyan green light_green yellow red pink orange purple brown)
 
   def self.colors
     COLORS
