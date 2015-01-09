@@ -1,7 +1,16 @@
 $(document).ready ->
   prettyConfirmBox = (message, callback) ->
-    bootbox.confirm message, (confirmed) ->
-      callback()  if confirmed
+    bootbox.dialog
+      message: message
+      buttons:
+        no:
+          label: "No"
+          className: "btn-default"
+        yes:
+          label: "Yes"
+          className: "btn-primary"
+          callback: ->
+            callback()
 
   $.rails.allowAction = (element) ->
     message = element.data("confirm")
