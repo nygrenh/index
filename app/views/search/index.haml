@@ -7,3 +7,4 @@
     = pluralize(@results.size, 'result')
 - @results.each do |result|
   = render 'shared/link', link: result
+= paginate @results
