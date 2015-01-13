@@ -18,7 +18,7 @@
     .field
       = f.label :color
       %br/
-      = f.select('tag_type', nil, {}, class: 'selectpicker') do |t|
+      = f.select('color', nil, {}, class: 'selectpicker') do |t|
         - @colors.each do |c|
           %option{value: c, 'data-content' => "<span class='tag-color-box label-#{c}'></span> <span class='tag-dropdown-text'>#{ c.humanize}</span>"}
   .actions

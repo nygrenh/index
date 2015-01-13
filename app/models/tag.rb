@@ -9,11 +9,11 @@ class Tag < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :name
-  validates :tag_type, inclusion: { in: Color.colors, message: '%{value} is not a valid color' }
+  validates :color, inclusion: { in: Color.colors, message: '%{value} is not a valid color' }
 
   def self.get(name, user_id)
     tag = Tag.where('lower(name) = ?', name.downcase).find_by(user_id: user_id)
-    tag ||= Tag.create name: name, tag_type: Color.random_color, user_id: user_id
+    tag ||= Tag.create name: name, color: Color.random_color, user_id: user_id
     tag
   end
 

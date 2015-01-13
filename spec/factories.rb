@@ -11,7 +11,7 @@ FactoryGirl.define do
 
   factory :tag do
     name 'interesting'
-    tag_type 'blue'
+    color 'blue'
   end
 
   factory :domain do

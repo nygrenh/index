@@ -10,7 +10,7 @@ describe Tag do
   it { is_expected.to validate_presence_of(:name) }
 
   context 'with an invalid color' do
-    subject(:tag) { FactoryGirl.build(:tag, tag_type: 'invalid') }
+    subject(:tag) { FactoryGirl.build(:tag, color: 'invalid') }
 
     it { is_expected.to be_invalid }
   end

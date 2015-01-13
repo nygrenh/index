@@ -48,8 +48,8 @@ describe TagsController do
 
     context 'with a valid color' do
       it 'updates the tag' do
-        expect_any_instance_of(Tag).to receive(:update).with('tag_type' => 'warning')
-        put :update, { id: tag.to_param, tag: { 'tag_type' => 'warning' } }, valid_session
+        expect_any_instance_of(Tag).to receive(:update).with('color' => 'warning')
+        put :update, { id: tag.to_param, tag: { 'color' => 'warning' } }, valid_session
       end
     end
 
