@@ -37,7 +37,7 @@ describe 'Searching' do
 
     it 'shows result count' do
       visit '/search?q=' + title
-      expect(page).to have_content('1 result')
+      expect(page).to have_content('1 link')
     end
 
     context 'with multiple results' do
@@ -49,14 +49,14 @@ describe 'Searching' do
 
       it 'shows a message' do
         visit '/search?q=' + title
-        expect(page).to have_content('5 results')
+        expect(page).to have_content(' Displaying all 5 links ')
       end
     end
 
     context 'with no results' do
       it 'shows a message' do
         visit '/search?q=' + 'asjdhasjkdhkj'
-        expect(page).to have_content('No results')
+        expect(page).to have_content('No links found')
       end
     end
 
