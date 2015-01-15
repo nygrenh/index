@@ -2,16 +2,9 @@ require 'rails_helper'
 
 describe "tags/index.haml" do
   before(:each) do
-    assign(:tags, [
-      stub_model(Tag,
-        :name => "Name",
-        :description => "MyText"
-      ),
-      stub_model(Tag,
-        :name => "Name",
-        :description => "MyText"
-      )
-    ])
+    FactoryGirl.create(:tag, name: 'Name')
+    FactoryGirl.create(:tag, name: 'Name')
+    assign(:tags, Tag.all.page(1))
   end
 
   it "renders a list of tags" do
