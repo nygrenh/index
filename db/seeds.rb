@@ -7,4 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 user = User.create name: 'a', password: 'a', password_confirmation: 'a'
 link = user.links.create url: 'https://github.com/nygrenh/index', title: 'nygrenh/index'
-link.tags.create name: 'Important sites', user_id: user.id, tag_type: 'primary', link_count: 1
+link.tags.create name: 'Important sites', user_id: user.id, color: 'blue', link_count: 1
