@@ -20,10 +20,8 @@ class LinksController < ApplicationController
 
   # GET /links/new
   def new
-    @link = Link.new
+    @link = Link.new(params.permit(allowed_attributes))
     set_tag_s
-    @link.url = params[:url]
-    @link.title = params[:title]
   end
 
   # GET /links/1/edit
@@ -59,7 +57,11 @@ class LinksController < ApplicationController
   end
   # Never trust parameters from the scary internet, only allow the white list through.
   def link_params
-    params.require(:link).permit(:title, :url, :description)
+    params.require(:link).permit(allowed_attributes)
+  end
+
+  def allowed_attributes
+    [:title, :url, :description]
   end
 
   def set_tag_s
