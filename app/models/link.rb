@@ -35,7 +35,7 @@ class Link < ActiveRecord::Base
   after_destroy :clean_domains
   before_destroy :clean_tags
 
-  private
+  protected
 
   def check_title
     self.title = url if title.blank?
