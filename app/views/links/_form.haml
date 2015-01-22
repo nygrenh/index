@@ -21,4 +21,4 @@
     = f.label :tags
     = f.text_area :tags, :value => @tag_s, class: "form-control", placeholder: "A comma-separated list of tags"
   .actions
-    = f.button class: 'btn btn-default', data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> #{ f.submit.to_str.include?("Create") ? "Creating..." : "Updating..."}"}
+    = f.button class: 'btn btn-default', data: { disable_with: disable_submit(f.submit.to_str)}

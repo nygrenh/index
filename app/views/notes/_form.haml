@@ -14,4 +14,4 @@
     = f.label :text
     = f.text_area :text, class: "form-control", placeholder: "The content", rows: 10
   .actions
-    = f.button class: 'btn btn-default', data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> #{ f.submit.to_str.include?("Create") ? "Creating..." : "Updating..."}"}
+    = f.button class: 'btn btn-default', data: { disable_with: disable_submit(f.submit.to_str)}

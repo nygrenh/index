@@ -5,4 +5,14 @@ module ApplicationHelper
     markdown = Redcarpet::Markdown.new(renderer, autolink: true)
     raw markdown.render(text)
   end
+
+  def disable_submit(action)
+    "<i class='fa fa-spinner fa-spin'></i> #{submit_action(action)}"
+  end
+
+  private
+
+  def submit_action(action)
+    action.include?('Create') ? 'Creating...' : 'Updating...'
+  end
 end
