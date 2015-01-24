@@ -3,5 +3,5 @@
   = link_to(new_link_path, class: 'btn btn-sm btn-default') do
     %span.glyphicon.glyphicon-plus
     New Link
-= render 'shared/links', links: @links
+= render @links
 = paginate @links

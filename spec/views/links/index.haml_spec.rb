@@ -19,5 +19,5 @@ describe 'links/index.haml' do
     assign(:links, links)
   end
 
-  it { is_expected.to render_template(partial: 'shared/_links') }
+  it { is_expected.to render_template(partial: 'links/_link') }
 end

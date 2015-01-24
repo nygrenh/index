@@ -3,6 +3,5 @@
 .search-result-metadata
   = page_entries_info @results
 
-- @results.each do |result|
-  = render 'shared/link', link: result
+= render @results
 = paginate @results
