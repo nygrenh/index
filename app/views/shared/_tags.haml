@@ -1,3 +1,0 @@
-%span.tags
-  - tags.sort_by { |t| -t.link_count }.each do |tag|
-    %span{:class => "label label-#{tag.color}"}= link_to tag.name, tag

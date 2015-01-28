@@ -5,7 +5,7 @@
       (#{link_to link.domain.domain, link.domain if link.domain})
   .description= link.description
   %span.timestamp= link.timestamp
-  = render 'shared/tags', tags: link.tags
+  = render link.tags
   .btn-group.link-actions
     = link_to 'Show', link, class:'btn btn-default btn-xs btn-action'
     = link_to 'Edit', edit_link_path(link), class:'btn btn-default btn-xs btn-action'

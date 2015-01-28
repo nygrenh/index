@@ -8,7 +8,7 @@
   = @link.description
 %p
   Created: #{@link.timestamp}
-  = render 'shared/tags', tags: @link.tags
+  = render @link.tags
 %p
   = link_to 'Edit', edit_link_path(@link), class: 'btn btn-sm btn-default'
 %label View this link on:
