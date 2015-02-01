@@ -1,1 +1,2 @@
-%span{:class => "label label-#{tag.color}"}= link_to tag.name, tag
+- cache tag do
+  %span{:class => "label label-#{tag.color}"}= link_to tag.name, tag
