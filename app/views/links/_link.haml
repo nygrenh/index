@@ -1,7 +1,7 @@
 .entry
   .link
     = link_to link.title, link.url
-    = render link.domain
+    = render link.domain if link.domain
   .description= link.description
   %span.timestamp= link.timestamp
   = render link.tags
