@@ -20,7 +20,7 @@ describe Domain do
       click_button('Create Link')
       visit links_path
       first('.entry').click_link('Destroy')
-      expect(Domain.last.link_count).to eq(1)
+      expect(Domain.last.links_count).to eq(1)
     end
   end
 end

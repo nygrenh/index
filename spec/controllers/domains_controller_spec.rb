@@ -5,7 +5,7 @@ describe DomainsController do
   let(:user) { FactoryGirl.create(:user) }
   let(:valid_session) { { user_id: user.id } }
   let(:valid_attributes) { FactoryGirl.attributes_for(:domain) }
-  let!(:domain) { FactoryGirl.create(:domain, user_id: user.id, link_count: 0) }
+  let!(:domain) { FactoryGirl.create(:domain, user_id: user.id) }
 
   describe 'GET index' do
     it 'assigns all domains as @domains' do

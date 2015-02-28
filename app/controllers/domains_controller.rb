@@ -6,7 +6,7 @@ class DomainsController < ApplicationController
   # GET /domains.json
   def index
     @domains = current_user.domains
-      .sort_by { |d| -d.link_count }
+      .sort_by { |d| -d.links_count }
   end
 
   # GET /domains/1

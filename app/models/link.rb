@@ -24,7 +24,7 @@ class Link < ActiveRecord::Base
   has_many :link_tags
   has_many :tags, through: :link_tags
   belongs_to :user
-  belongs_to :domain
+  belongs_to :domain, counter_cache: true
   validates_presence_of :url
   validates :url, format: /\Ahttp.*\..*\z/
 
@@ -42,20 +42,12 @@ class Link < ActiveRecord::Base
   end
 
   def clean_domains
-    if domain.links.count.zero?
-      domain.destroy
-    else
-      domain.link_count -= 1
-      domain.save
-    end
+    domain.destroy if domain.links.count.zero?
   end
 
   def associate_with_domain
     domain_s = URI.parse(url).host.gsub(/^www\./, '')
-    domain = Domain.get(domain_s, user_id)
-    self.domain = domain
-    domain.link_count += 1
-    domain.save
+    self.domain = Domain.get(domain_s, user_id)
   end
 
   def update_tags

@@ -15,7 +15,7 @@ describe 'domains/show.haml' do
   end
 
   it 'shows link count' do
-    domain.link_count = 33
+    allow(domain).to receive(:links_count) { 33 }
     render
     expect(rendered).to match(/Links: 33/)
   end
