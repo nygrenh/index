@@ -8,5 +8,5 @@
     - @tags.each do |tag|
       %tr
         %td= link_to tag.name, tag
-        %td= tag.link_count
+        %td= tag.links_count
 = paginate @tags

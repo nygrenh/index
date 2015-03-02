@@ -6,7 +6,7 @@ class TagsController < ApplicationController
   # GET /tags.json
   def index
     @tags = current_user.tags
-    .order(link_count: :desc)
+    .order(links_count: :desc)
     .page(params[:page])
   end
 

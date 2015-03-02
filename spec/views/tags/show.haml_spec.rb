@@ -14,7 +14,7 @@ describe 'tags/show.haml' do
   end
 
   it 'shows link count' do
-    tag.link_count = 56
+    allow(tag).to receive(:links_count) { 56 }
     render
     expect(rendered).to match(/Links: 56/)
   end

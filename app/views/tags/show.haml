@@ -5,6 +5,6 @@
   = markdown @tag.description
 %p
   Created:  #{ @tag.timestamp },
-  Links: #{ @tag.link_count }
+  Links: #{ @tag.links_count }
 = render @links if @links
 = paginate @links if  @links

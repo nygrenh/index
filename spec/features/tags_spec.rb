@@ -38,7 +38,7 @@ describe Tag do
       visit edit_link_path(Link.last)
       fill_in('link_tags', with: '')
       click_button('Update Link')
-      expect(Tag.last.link_count).to eq(1)
+      expect(Tag.last.links_count).to eq(1)
     end
 
     describe 'everything' do

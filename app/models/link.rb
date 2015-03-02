@@ -21,7 +21,7 @@ class Link < ActiveRecord::Base
                   },
                   ranked_by: ':tsearch + (0.5 * :dmetaphone)'
 
-  has_many :link_tags
+  has_many :link_tags, dependent: :destroy
   has_many :tags, through: :link_tags
   belongs_to :user
   belongs_to :domain, counter_cache: true
@@ -33,7 +33,6 @@ class Link < ActiveRecord::Base
   before_save :associate_with_domain
   after_save :update_tags
   after_destroy :clean_domains
-  before_destroy :clean_tags
 
   protected
 
@@ -52,36 +51,11 @@ class Link < ActiveRecord::Base
 
   def update_tags
     return unless @tagstring
-    old_tags = Array.new(tags)
     new_tags = []
     @tagstring.squish.split(', ').each do |t|
       new_tags << Tag.get(t.strip, user_id)
     end
     self.tags = new_tags
-    update_tag_link_counts(old_tags, new_tags)
-  end
-
-  def update_tag_link_counts(old_tags, new_tags)
-    dec = old_tags - new_tags
-    dec.each do |t|
-      t.link_count -= 1
-      t.save
-      t.destroy if t.link_count == 0
-    end
-    add = new_tags - old_tags
-    add.each do |t|
-      t.link_count += 1
-      t.save
-    end
-  end
-
-  def clean_tags
-    tags.each do |t|
-      tag = Tag.get(t.name, user_id)
-      tag.link_count -= 1
-      tag.save
-      tag.destroy if tag.link_count == 0
-    end
   end
 
   def complete_url

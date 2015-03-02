@@ -1,7 +1,7 @@
 class Tag < ActiveRecord::Base
   include Timestamped
 
-  has_many :link_tags
+  has_many :link_tags, dependent: :destroy
   has_many :links, through: :link_tags
   has_many :note_tags
   has_many :notes, through: :note_tags
@@ -17,9 +17,16 @@ class Tag < ActiveRecord::Base
     tag
   end
 
-  def update_link_count
-    self.link_count = links.count
-    save
+  # Counter cache updates don't trigger any callbacks
+  def self.decrement_counter(counter_name, id)
+    super
+    Tag.where(id: id).take.instance_eval(&:cleanup)
+  end
+
+  protected
+
+  def cleanup
+    destroy if links.count == 0
   end
 
 end

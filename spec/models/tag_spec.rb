@@ -15,7 +15,7 @@ describe Tag do
     it { is_expected.to be_invalid }
   end
 
-  describe 'link_count' do
+  describe 'links_count' do
     let(:link) { FactoryGirl.create(:link) }
     let(:another_link) { FactoryGirl.create(:link) }
     # We have to fetch  afresh object from database because models change data
@@ -29,22 +29,12 @@ describe Tag do
     end
 
     it 'should be calculated correctly' do
-      expect(db_tag.link_count).to eq(2)
+      expect(db_tag.links_count).to eq(2)
     end
 
     it 'should update when link gets destroyed' do
       link.destroy
-      expect(db_tag.link_count).to eq(1)
-    end
-  end
-
-  describe '#update_link_count' do
-    let(:link) { FactoryGirl.create(:link) }
-    it 'updates the link count' do
-      tag.links << link
-      expect(tag.link_count).to eq(0)
-      tag.update_link_count
-      expect(tag.link_count).to eq(1)
+      expect(db_tag.links_count).to eq(1)
     end
   end
 
