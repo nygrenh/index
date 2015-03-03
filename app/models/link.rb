@@ -25,20 +25,14 @@ class Link < ActiveRecord::Base
   has_many :tags, through: :link_tags
   belongs_to :user
   belongs_to :domain, counter_cache: true
-  validates_presence_of :url
-  validates :url, format: /\Ahttp.*\..*\z/
+  validates :url, format: /\Ahttp.*\..*\z/, presence: true
 
-  before_validation :complete_url
-  before_save :check_title
+  before_validation :complete_url, :fill_title
   before_save :associate_with_domain
   after_save :update_tags
   after_destroy :clean_domains
 
   protected
-
-  def check_title
-    self.title = url if title.blank?
-  end
 
   def clean_domains
     domain.destroy if domain.links.count.zero?
@@ -56,6 +50,10 @@ class Link < ActiveRecord::Base
       new_tags << Tag.get(t.strip, user_id)
     end
     self.tags = new_tags
+  end
+
+  def fill_title
+    self.title = url if title.blank?
   end
 
   def complete_url
