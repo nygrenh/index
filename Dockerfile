@@ -1,4 +1,4 @@
-FROM ruby:2.1.5
+FROM ruby:2.2
 
 ENV RAILS_ENV production
 
@@ -13,7 +13,7 @@ RUN chown -R user:users /usr/src/app && \
 WORKDIR /usr/src/app
 
 USER user
-RUN bundle install
+RUN bundle install -j $(nproc)
 ENV PATH /usr/src/app/vendor/bundle/bin:$PATH
 
 USER root
