@@ -21,12 +21,10 @@ class LinksController < ApplicationController
   # GET /links/new
   def new
     @link = Link.new(params.permit(allowed_attributes))
-    set_tag_s
   end
 
   # GET /links/1/edit
   def edit
-    set_tag_s
   end
 
   # POST /links
@@ -62,10 +60,6 @@ class LinksController < ApplicationController
 
   def allowed_attributes
     [:title, :url, :description]
-  end
-
-  def set_tag_s
-    @tag_s = @link.tags.map(&:name).to_sentence(last_word_connector: ', ', two_words_connector: ', ')
   end
 
   def set_tagstring

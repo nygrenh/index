@@ -32,6 +32,10 @@ class Link < ActiveRecord::Base
   after_save :update_tags
   after_destroy :clean_domains
 
+  def current_tags
+    tags.map(&:name).to_sentence(last_word_connector: ', ', two_words_connector: ', ')
+  end
+
   protected
 
   def clean_domains
