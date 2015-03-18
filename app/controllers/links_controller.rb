@@ -1,7 +1,6 @@
 class LinksController < ApplicationController
   before_action :set_link, only: [:show, :edit, :update, :destroy]
   before_action :ensure_that_signed_in
-  before_action :set_tagstring, only: [:update]
 
   # GET /links
   # GET /links.json
@@ -31,7 +30,6 @@ class LinksController < ApplicationController
   # POST /links.json
   def create
     @link = current_user.links.new link_params
-    set_tagstring
     create_and_respond(@link)
   end
 
@@ -59,10 +57,6 @@ class LinksController < ApplicationController
   end
 
   def allowed_attributes
-    [:title, :url, :description]
-  end
-
-  def set_tagstring
-    @link.tagstring = params[:link][:tags]
+    [:title, :url, :description, :tagstring]
   end
 end

@@ -25,7 +25,7 @@ describe Link do
       it 'creates tags' do
         visit new_link_path
         fill_in('link_url', with: 'http://www.test.com/')
-        fill_in('link_tags', with: 'Test tag, Another test tag, Something')
+        fill_in('link_tagstring', with: 'Test tag, Another test tag, Something')
         expect { click_button('Create Link') }.to change { Tag.count }.by(3)
       end
     end

@@ -9,7 +9,7 @@ describe Tag do
     log_in(name: user.name, password: user.password)
     visit new_link_path
     fill_in('link_url', with: 'http://www.test.com/')
-    fill_in('link_tags', with: 'Test tag')
+    fill_in('link_tagstring', with: 'Test tag')
     click_button('Create Link')
   end
 
@@ -33,10 +33,10 @@ describe Tag do
     it 'decreases link count' do
       visit new_link_path
       fill_in('link_url', with: 'http://www.test2.com/')
-      fill_in('link_tags', with: 'Test tag')
+      fill_in('link_tagstring', with: 'Test tag')
       click_button('Create Link')
       visit edit_link_path(Link.last)
-      fill_in('link_tags', with: '')
+      fill_in('link_tagstring', with: '')
       click_button('Update Link')
       expect(Tag.last.links_count).to eq(1)
     end
@@ -45,7 +45,7 @@ describe Tag do
       it 'destroys the tag' do
         tag = Tag.last
         visit edit_link_path(Link.last)
-        fill_in('link_tags', with: '')
+        fill_in('link_tagstring', with: '')
         click_button('Update Link')
         expect(Tag.where(id: tag.id)).to be_empty
       end
