@@ -2,7 +2,7 @@ language: ruby
 cache: bundler
 sudo: false
 env: RAILS_ENV=test
-rvm: 2.1.5
+rvm: 2.2.1
 before_script:
   - psql -c 'create database index_test;' -U postgres
 script:
