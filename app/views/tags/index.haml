@@ -2,11 +2,13 @@
 %table.table.table-hover
   %thead
     %tr
-      %th Name
+      %th Tag
       %th Links
   %tbody
     - @tags.each do |tag|
       %tr
-        %td= link_to tag.name, tag
+        %td
+          %span(class="tag-color-box label-#{tag.color}")
+          = link_to tag.name, tag
         %td= tag.links_count
 = paginate @tags
