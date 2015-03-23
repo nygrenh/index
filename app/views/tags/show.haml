@@ -1,5 +1,6 @@
 %h1
   = @tag.name
+  %span(class="tag-color-box label-#{@tag.color}")
   = link_to 'Edit', edit_tag_path(@tag), class: 'btn btn-sm btn-default'
 %p
   = markdown @tag.description
