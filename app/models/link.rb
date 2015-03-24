@@ -49,11 +49,13 @@ class Link < ActiveRecord::Base
 
   def update_tags
     return unless @tagstring
-    new_tags = []
-    @tagstring.squish.split(', ').each do |t|
-      new_tags << Tag.get(t.strip, user_id)
+    self.tags = given_tags.each_with_object([]) do |name, array|
+      array << Tag.get(name.strip, user_id)
     end
-    self.tags = new_tags
+  end
+
+  def given_tags
+    @tagstring.squish.split(', ')
   end
 
   def fill_title
