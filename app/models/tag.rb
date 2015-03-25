@@ -11,9 +11,11 @@ class Tag < ActiveRecord::Base
   validates_presence_of :name
   validates :color, inclusion: { in: Color.colors, message: '%{value} is not a valid color' }
 
+  before_validation :ensure_tag_has_color
+
   def self.get(name, user_id)
     tag = Tag.where('lower(name) = ?', name.downcase).find_by(user_id: user_id)
-    tag ||= Tag.create name: name, color: Color.random_color, user_id: user_id
+    tag ||= Tag.create name: name, user_id: user_id
     tag
   end
 
@@ -24,6 +26,10 @@ class Tag < ActiveRecord::Base
   end
 
   protected
+
+  def ensure_tag_has_color
+    self.color = Color.random_color unless color
+  end
 
   def cleanup
     destroy if links.count == 0
