@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe TagsController do
   describe 'routing' do
-
     it 'routes to #index' do
       expect(get('/tags')).to route_to('tags#index')
     end
@@ -30,6 +29,5 @@ describe TagsController do
     it "doesn't route to #destroy" do
       expect(delete('/tags/1')).not_to route_to('tags#destroy', id: '1')
     end
-
   end
 end

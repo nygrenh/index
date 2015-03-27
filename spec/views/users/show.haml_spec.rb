@@ -40,5 +40,4 @@ describe 'users/show.haml' do
     render
     expect(rendered).to match(/just now/)
   end
-
 end

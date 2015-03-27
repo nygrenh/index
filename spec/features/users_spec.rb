@@ -2,7 +2,6 @@ require 'rails_helper'
 include LoginHelper
 
 describe 'User' do
-
   describe 'who has registered' do
     let(:user) { FactoryGirl.create(:user) }
 

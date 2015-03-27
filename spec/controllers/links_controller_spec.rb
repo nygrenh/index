@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe LinksController do
-
   let(:user) { FactoryGirl.create(:user) }
   let(:valid_session) { { user_id: user.id } }
   let(:valid_attributes) { FactoryGirl.attributes_for(:link) }
@@ -38,9 +37,9 @@ describe LinksController do
   describe 'POST create' do
     describe 'with valid params' do
       it 'creates a new Link' do
-        expect {
+        expect do
           post :create, { link: valid_attributes }, valid_session
-        }.to change(Link, :count).by(1)
+        end.to change(Link, :count).by(1)
       end
 
       it 'assigns a newly created link as @link' do
@@ -109,9 +108,9 @@ describe LinksController do
 
   describe 'DELETE destroy' do
     it 'destroys the requested link' do
-      expect {
+      expect do
         delete :destroy, { id: link.to_param }, valid_session
-      }.to change(Link, :count).by(-1)
+      end.to change(Link, :count).by(-1)
     end
 
     it 'redirects to the links list' do
@@ -119,5 +118,4 @@ describe LinksController do
       expect(response).to redirect_to(links_url)
     end
   end
-
 end

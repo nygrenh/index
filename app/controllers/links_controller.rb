@@ -51,6 +51,7 @@ class LinksController < ApplicationController
   def set_link
     @link = current_user.links.find(params[:id])
   end
+
   # Never trust parameters from the scary internet, only allow the white list through.
   def link_params
     params.require(:link).permit(allowed_attributes)

@@ -62,7 +62,7 @@ describe 'Searching' do
 
     describe 'that are not own' do
       let(:another_user) { FactoryGirl.create(:user, name: 'Smith') }
-      let(:link) { FactoryGirl.create(:link, title: 'Unsearchable link', user_id: another_user.id)}
+      let(:link) { FactoryGirl.create(:link, title: 'Unsearchable link', user_id: another_user.id) }
       it 'cannot be searched' do
         visit '/search?q=' + 'link'
         expect(page).not_to have_content(link.title)

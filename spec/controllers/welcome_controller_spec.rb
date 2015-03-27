@@ -2,7 +2,6 @@ require 'rails_helper'
 include LoginHelper
 
 RSpec.describe WelcomeController, type: :controller do
-
   describe 'GET index' do
     it 'returns http success' do
       get :index
@@ -19,5 +18,4 @@ RSpec.describe WelcomeController, type: :controller do
       end
     end
   end
-
 end

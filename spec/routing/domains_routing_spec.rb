@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe DomainsController do
   describe 'routing' do
-
     it 'routes to #index' do
       expect(get('/domains')).to route_to('domains#index')
     end
@@ -30,6 +29,5 @@ describe DomainsController do
     it "doesn't route to #destroy" do
       expect(delete('/domains/1')).not_to route_to('domains#destroy', id: '1')
     end
-
   end
 end

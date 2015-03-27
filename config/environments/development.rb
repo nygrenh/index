@@ -28,5 +28,5 @@ Index::Application.configure do
   config.assets.debug = true
 
   # Allow dangerous debug stuff
-  BetterErrors::Middleware.allow_ip! "172.17.42.1/1"
+  BetterErrors::Middleware.allow_ip! '172.17.42.1/1'
 end

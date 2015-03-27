@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe 'domains/show.haml' do
-
   let(:domain) { FactoryGirl.create(:domain, domain: 'Cool Domain', description: 'Awesome') }
 
   before(:each) do
@@ -24,5 +23,4 @@ describe 'domains/show.haml' do
     render
     expect(rendered).to match(/just now/)
   end
-
 end

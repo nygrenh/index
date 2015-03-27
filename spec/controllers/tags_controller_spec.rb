@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe TagsController do
-
   let(:user) { FactoryGirl.create(:user) }
   let(:valid_session) { { user_id: user.id } }
   let(:valid_attributes) { FactoryGirl.attributes_for(:tag) }
@@ -69,5 +68,4 @@ describe TagsController do
       end
     end
   end
-
 end

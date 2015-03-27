@@ -12,5 +12,4 @@ class Color
   def self.random_color
     colors.sample
   end
-
 end

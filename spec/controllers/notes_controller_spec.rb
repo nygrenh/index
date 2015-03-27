@@ -1,8 +1,6 @@
 require 'rails_helper'
 
-
 describe NotesController do
-
   let(:user) { FactoryGirl.create(:user) }
   let(:valid_session) { { user_id: user.id } }
   let(:valid_attributes) { FactoryGirl.attributes_for(:note) }
@@ -39,9 +37,9 @@ describe NotesController do
   describe 'POST create' do
     describe 'with valid params' do
       it 'creates a new Note' do
-        expect {
+        expect do
           post :create, { note: valid_attributes }, valid_session
-        }.to change(Note, :count).by(1)
+        end.to change(Note, :count).by(1)
       end
 
       it 'assigns a newly created note as @note' do
@@ -115,9 +113,9 @@ describe NotesController do
 
   describe 'DELETE destroy' do
     it 'destroys the requested note' do
-      expect {
+      expect do
         delete :destroy, { id: note.to_param }, valid_session
-      }.to change(Note, :count).by(-1)
+      end.to change(Note, :count).by(-1)
     end
 
     it 'redirects to the notes list' do
@@ -125,5 +123,4 @@ describe NotesController do
       expect(response).to redirect_to(notes_url)
     end
   end
-
 end

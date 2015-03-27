@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe LinksController do
   describe 'routing' do
-
     it 'routes to #index' do
       expect(get('/links')).to route_to('links#index')
     end
@@ -30,6 +29,5 @@ describe LinksController do
     it 'routes to #destroy' do
       expect(delete('/links/1')).to route_to('links#destroy', id: '1')
     end
-
   end
 end

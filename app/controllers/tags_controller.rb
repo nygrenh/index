@@ -6,19 +6,19 @@ class TagsController < ApplicationController
   # GET /tags.json
   def index
     @tags = current_user.tags
-    .order(links_count: :desc)
-    .page(params[:page])
+            .order(links_count: :desc)
+            .page(params[:page])
   end
 
   # GET /tags/1
   # GET /tags/1.json
   def show
     @links = @tag.links
-      .includes(:tags, :domain, :user)
-      .order(created_at: :desc)
-      .where(user_id: current_user.id)
-      .page(params[:page])
-      .load
+             .includes(:tags, :domain, :user)
+             .order(created_at: :desc)
+             .where(user_id: current_user.id)
+             .page(params[:page])
+             .load
   end
 
   # GET /tags/1/edit

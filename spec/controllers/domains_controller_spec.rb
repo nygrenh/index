@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe DomainsController do
-
   let(:user) { FactoryGirl.create(:user) }
   let(:valid_session) { { user_id: user.id } }
   let(:valid_attributes) { FactoryGirl.attributes_for(:domain) }
@@ -62,5 +61,4 @@ describe DomainsController do
       end
     end
   end
-
 end

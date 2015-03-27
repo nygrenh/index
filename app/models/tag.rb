@@ -34,5 +34,4 @@ class Tag < ActiveRecord::Base
   def cleanup
     destroy if links.count == 0
   end
-
 end

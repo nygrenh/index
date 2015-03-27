@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe NotesController do
   describe 'routing' do
-
     it 'routes to #index' do
       expect(get('/notes')).to route_to('notes#index')
     end
@@ -30,6 +29,5 @@ describe NotesController do
     it 'routes to #destroy' do
       expect(delete('/notes/1')).to route_to('notes#destroy', id: '1')
     end
-
   end
 end
