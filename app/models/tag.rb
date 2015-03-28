@@ -8,7 +8,7 @@ class Tag < ActiveRecord::Base
 
   belongs_to :user
 
-  validates_presence_of :name
+  validates :name, presence: true
   validates :color, inclusion: { in: Color.colors, message: '%{value} is not a valid color' }
 
   before_validation :ensure_tag_has_color

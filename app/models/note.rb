@@ -5,5 +5,5 @@ class Note < ActiveRecord::Base
   has_many :tags, through: :note_tags
   belongs_to :user
 
-  validates_presence_of :text
+  validates :text, presence: true
 end
