@@ -4,11 +4,11 @@ describe 'domains/index.haml' do
   before(:each) do
     assign(:domains, [
       stub_model(Domain,
-                 domain: 'Domain',
+                 name: 'Domain',
                  description: 'MyText'
       ),
       stub_model(Domain,
-                 domain: 'Domain',
+                 name: 'Domain',
                  description: 'MyText'
       )
     ])

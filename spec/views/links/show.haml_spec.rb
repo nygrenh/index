@@ -4,7 +4,7 @@ describe 'links/show.haml' do
   let(:tag) { FactoryGirl.create(:tag) }
 
   before(:each) do
-    FactoryGirl.build(:domain, domain: 'test.com')
+    FactoryGirl.build(:domain, name: 'test.com')
     @link = FactoryGirl.create(:link, title: 'Title', description: 'Cool stuff')
     tags = [tag]
     allow(@link).to receive(:tags) { tags }

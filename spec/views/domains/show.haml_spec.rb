@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'domains/show.haml' do
-  let(:domain) { FactoryGirl.create(:domain, domain: 'Cool Domain', description: 'Awesome') }
+  let(:domain) { FactoryGirl.create(:domain, name: 'Cool Domain', description: 'Awesome') }
 
   before(:each) do
     @domain = domain
@@ -9,7 +9,7 @@ describe 'domains/show.haml' do
 
   it 'renders attributes in <p>' do
     render
-    expect(rendered).to match(domain.domain)
+    expect(rendered).to match(domain.name)
     expect(rendered).to match(domain.description)
   end
 

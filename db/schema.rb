@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_150_302_190_823) do
+ActiveRecord::Schema.define(version: 20_150_330_192_509) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
   enable_extension 'pg_trgm'
   enable_extension 'fuzzystrmatch'
 
   create_table 'domains', force: :cascade do |t|
-    t.string 'domain'
+    t.string 'name'
     t.text 'description'
     t.datetime 'created_at',              null: false
     t.datetime 'updated_at',              null: false

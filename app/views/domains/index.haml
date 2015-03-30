@@ -7,5 +7,5 @@
   %tbody
     - @domains.each do |domain|
       %tr
-        %td= link_to domain.domain, domain
+        %td= link_to domain.name, domain
         %td= domain.links_count
