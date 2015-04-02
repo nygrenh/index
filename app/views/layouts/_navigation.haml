@@ -1,7 +1,7 @@
 %nav.navbar.navbar-default.navbar-static-top
   .container
     .navbar-header
-      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+      %button.navbar-toggle{ 'data-target' => '.navbar-collapse', 'data-toggle' => 'collapse', type: 'button' }
         %span.sr-only Toggle navigation
         %span.icon-bar
         %span.icon-bar
@@ -13,8 +13,8 @@
       - if current_user
         %ul.nav.navbar-nav.navbar-right.navigation-links
           = render 'layouts/search'
-          %li.dropdown.navigation-item{class: params[:controller] == 'users' && 'active'}
-            %a.dropdown-toggle{'data-toggle' => 'dropdown', 'href' => '#'}
+          %li.dropdown.navigation-item{ class: params[:controller] == 'users' && 'active' }
+            %a.dropdown-toggle{ 'data-toggle' => 'dropdown', 'href' => '#' }
               %i.fa.fa-user.fa-fw
               = current_user.name
               %span.caret
