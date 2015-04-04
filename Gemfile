@@ -80,6 +80,7 @@ group :test do
   gem 'shoulda-matchers', '~> 2.7.0', require: false
   gem 'simplecov', '~> 0.9.1', require: false
   gem 'coveralls', '~> 0.7.2', require: false
+  gem 'rubocop', '~> 0.29.1'
 end
 
 group :development, :test do

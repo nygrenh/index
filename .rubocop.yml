@@ -9,3 +9,6 @@ Documentation:
 
 LineLength:
   Max: 160
+
+Metrics/AbcSize:
+  Max: 18
