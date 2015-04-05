@@ -14,7 +14,6 @@ WORKDIR /usr/src/app
 
 USER user
 RUN bundle install -j $(nproc)
-ENV PATH /usr/src/app/vendor/bundle/bin:$PATH
 
 USER root
 ADD . /usr/src/app
