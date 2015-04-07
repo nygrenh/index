@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_that_signed_in
-    return unless current_user.nil?
+    return if current_user
     session[:return_to] = request.url
     redirect_to new_session_path, notice: 'Please log in.'
   end
