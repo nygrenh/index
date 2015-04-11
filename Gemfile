@@ -7,7 +7,7 @@ gem 'rails', '~> 4.2.0'
 gem 'sass-rails', '~> 5.0.0'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '~> 2.6.0'
+gem 'uglifier', '~> 2.7.1'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.2.6'
 gem 'bcrypt', '~> 3.1.9'
 
 # Load enviroment variables
-gem 'dotenv-rails', '~> 1.0.2'
+gem 'dotenv-rails', '~> 2.0.1'
 
 # CSS framework
 gem 'bootstrap-sass', '~> 3.3.1'
@@ -35,7 +35,7 @@ gem 'bootstrap-select-rails', '~> 1.6.3'
 gem 'bootbox-rails', '~> 0.4.0'
 
 # Icons
-gem 'font-awesome-rails', '~> 4.2.0'
+gem 'font-awesome-rails', '~> 4.3.0'
 
 # Markdown parser
 gem 'redcarpet', '~> 3.2.2'
@@ -44,28 +44,28 @@ gem 'redcarpet', '~> 3.2.2'
 gem 'kaminari', '~> 0.16.1'
 
 # Use haml for views
-gem 'haml-rails', '~> 0.6.0'
+gem 'haml-rails', '~> 0.9.0'
 
 # Webserver
-gem 'puma', '~> 2.10.2'
+gem 'puma', '~> 2.11.1'
 
 # Search
 gem 'pg_search', '~> 0.7.8'
 
 # Charts
 gem 'chartkick', '~> 1.3.2'
-gem 'groupdate', '~> 2.3.0'
+gem 'groupdate', '~> 2.4.0'
 
 group :production do
-  gem 'pg', '~> 0.17.1'
+  gem 'pg', '~> 0.18.1'
   gem 'rails_12factor', '~> 0.0.3'
 end
 
 group :development do
   gem 'rails_layout', '~> 1.0.24'
-  gem 'byebug', '~> 3.5.1'
+  gem 'byebug', '~> 4.0.5'
   # better error messages
-  gem 'better_errors', '~> 2.0.0'
+  gem 'better_errors', '~> 2.1.1'
   gem 'binding_of_caller', '~> 0.7.2'
   gem 'rack-mini-profiler', '~> 0.9.2'
 end
@@ -77,14 +77,14 @@ group :test do
   # Stubs and mocks for testing
   gem 'rspec-activemodel-mocks', '~> 1.0.1'
   # Matchers for common Rails functionality
-  gem 'shoulda-matchers', '~> 2.7.0', require: false
+  gem 'shoulda-matchers', '~> 2.8.0', require: false
   gem 'simplecov', '~> 0.9.1', require: false
-  gem 'coveralls', '~> 0.7.2', require: false
-  gem 'rubocop', '~> 0.29.1'
+  gem 'coveralls', '~> 0.8.0', require: false
+  gem 'rubocop', '~> 0.30.0'
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.1.0'
+  gem 'rspec-rails', '~> 3.2.1'
   gem 'sqlite3', '~> 1.3.10'
 end
 
