@@ -17,7 +17,7 @@ class Tag < ActiveRecord::Base
   # Counter cache updates don't trigger any callbacks
   def self.decrement_counter(counter_name, id)
     super
-    Tag.where(id: id).take.instance_eval(&:cleanup)
+    Tag.find_by(id: id).instance_eval(&:cleanup)
   end
 
   protected

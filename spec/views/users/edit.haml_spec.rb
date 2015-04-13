@@ -5,7 +5,7 @@ describe 'users/edit' do
     @user = assign(:user, stub_model(User,
                                      name: 'MyString',
                                      password_digest: 'MyString'
-    ))
+                                    ))
   end
 
   it 'renders the edit user form' do

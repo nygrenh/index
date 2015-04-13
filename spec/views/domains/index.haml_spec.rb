@@ -6,11 +6,11 @@ describe 'domains/index.haml' do
       stub_model(Domain,
                  name: 'Domain',
                  description: 'MyText'
-      ),
+                ),
       stub_model(Domain,
                  name: 'Domain',
                  description: 'MyText'
-      )
+                )
     ])
   end
 

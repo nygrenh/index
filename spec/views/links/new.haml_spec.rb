@@ -9,7 +9,7 @@ describe 'links/new' do
                              source: 'MyString',
                              user_id: 1,
                              domain_id: 'MyString'
-    ).as_new_record)
+                            ).as_new_record)
   end
 
   it 'renders new link form' do

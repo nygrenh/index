@@ -6,7 +6,7 @@ describe 'notes/new' do
                              name: 'MyString',
                              text: 'MyText',
                              user_id: ''
-    ).as_new_record)
+                            ).as_new_record)
   end
 
   it 'renders new note form' do

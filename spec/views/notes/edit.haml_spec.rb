@@ -6,7 +6,7 @@ describe 'notes/edit' do
                                      name: 'MyString',
                                      text: 'MyText',
                                      user_id: ''
-    ))
+                                    ))
   end
 
   it 'renders the edit note form' do

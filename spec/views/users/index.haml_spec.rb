@@ -6,11 +6,11 @@ describe 'users/index.haml' do
       stub_model(User,
                  name: 'Name',
                  password_digest: 'Password Digest'
-      ),
+                ),
       stub_model(User,
                  name: 'Name',
                  password_digest: 'Password Digest'
-      )
+                )
     ])
   end
 

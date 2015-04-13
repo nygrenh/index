@@ -9,7 +9,7 @@ describe 'links/edit' do
                                      source: 'MyString',
                                      user_id: 1,
                                      domain_id: 'MyString'
-    ))
+                                    ))
   end
 
   it 'renders the edit link form' do

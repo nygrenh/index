@@ -5,7 +5,7 @@ describe 'domains/edit' do
     @domain = assign(:domain, stub_model(Domain,
                                          domain: 'MyString',
                                          description: 'MyText'
-    ))
+                                        ))
   end
 
   it 'renders the edit domain form' do

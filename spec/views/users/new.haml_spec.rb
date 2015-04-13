@@ -5,7 +5,7 @@ describe 'users/new' do
     assign(:user, stub_model(User,
                              name: 'MyString',
                              password_digest: 'MyString'
-    ).as_new_record)
+                            ).as_new_record)
   end
 
   it 'renders new user form' do

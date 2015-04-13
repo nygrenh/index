@@ -5,7 +5,7 @@ describe 'domains/new' do
     assign(:domain, stub_model(Domain,
                                domain: 'MyString',
                                description: 'MyText'
-    ).as_new_record)
+                              ).as_new_record)
   end
 
   it 'renders new domain form' do

@@ -10,7 +10,7 @@ describe 'links/index.haml' do
                       source: 'Source',
                       user_id: 1,
                       domain_id: 'Domain'
-    )
+                     )
     links = [link]
     allow(links).to receive(:current_page) { 1 }
     allow(links).to receive(:total_pages) { 1 }
