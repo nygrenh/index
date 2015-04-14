@@ -11,4 +11,4 @@ LineLength:
   Max: 160
 
 Metrics/AbcSize:
-  Max: 18
+  Max: 20
