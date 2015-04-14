@@ -3,7 +3,7 @@ module Timestamped
   include ActionView::Helpers::TextHelper
 
   def timestamp
-    diff = Time.now.to_i - created_at.to_i
+    diff = Time.zone.now.to_i - created_at.to_i
     case diff
     when under(1.minute) then 'just now'
     when under(1.hour) then minutes_ago(diff)

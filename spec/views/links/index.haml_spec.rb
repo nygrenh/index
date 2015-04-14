@@ -15,7 +15,7 @@ describe 'links/index.haml' do
     allow(links).to receive(:current_page) { 1 }
     allow(links).to receive(:total_pages) { 1 }
     allow(links).to receive(:limit_value) { 1 }
-    allow(link).to receive(:created_at) { Time.now }
+    allow(link).to receive(:created_at) { Time.zone.now }
     assign(:links, links)
   end
 

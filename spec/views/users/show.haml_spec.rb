@@ -8,7 +8,7 @@ describe 'users/show.haml' do
     allow(@user).to receive(:tags).and_return(Array.new(5))
     allow(@user).to receive(:domains).and_return(Array.new(12))
     allow(@user).to receive(:notes).and_return(Array.new(33))
-    allow(@user).to receive(:created_at).and_return(Time.now)
+    allow(@user).to receive(:created_at).and_return(Time.zone.now)
   end
 
   it 'renders attributes in <p>' do
