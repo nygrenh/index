@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_150_330_192_509) do
+ActiveRecord::Schema.define(version: 20_150_415_164_648) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
   enable_extension 'pg_trgm'
@@ -63,6 +63,16 @@ ActiveRecord::Schema.define(version: 20_150_330_192_509) do
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
   end
+
+  create_table 'taggables', force: :cascade do |t|
+    t.integer 'tag_id'
+    t.integer 'tagged_id'
+    t.string 'tagged_type'
+    t.datetime 'created_at',  null: false
+    t.datetime 'updated_at',  null: false
+  end
+
+  add_index 'taggables', %w(tagged_type tagged_id), name: 'index_taggables_on_tagged_type_and_tagged_id', using: :btree
 
   create_table 'tags', force: :cascade do |t|
     t.string 'name'
