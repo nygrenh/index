@@ -4,8 +4,7 @@ class Tag < ActiveRecord::Base
 
   has_many :link_tags, dependent: :destroy
   has_many :links, through: :link_tags
-  has_many :note_tags
-  has_many :notes, through: :note_tags
+  has_many :tagged, through: :taggables
 
   belongs_to :user
 

@@ -5,7 +5,6 @@ describe Tag do
   subject(:tag) { FactoryGirl.create(:tag) }
   it { is_expected.to be_valid }
   it { is_expected.to have_many(:links) }
-  it { is_expected.to have_many(:notes) }
   it { is_expected.to belong_to(:user) }
   it { is_expected.to validate_presence_of(:name) }
 
