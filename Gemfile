@@ -50,7 +50,7 @@ gem 'haml-rails', '~> 0.9.0'
 gem 'puma', '~> 2.11.1'
 
 # Search
-gem 'pg_search', '~> 0.7.8'
+gem 'pg_search', '~> 1.0.0'
 
 # Charts
 gem 'chartkick', '~> 1.3.2'
